@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rare Action - خانه </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="products.css">
+    <!-- برای فونت وزیر -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+    /* --- استایل‌های اختصاصی صفحه ساعت‌ها --- */
+        .watches-page-container {
+    padding: 40px 20px;
+    background-color: var(--background-light, #f8f9fa);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.watches-page-title {
+    text-align: center;
+    font-size: 2.8em;
+    color: var(--primary-purple, #6a1b9a);
+    margin-bottom: 40px;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.watches-page-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background-color: var(--accent-pink, #e91e63);
+    border-radius: 2px;
+}
+
+/* ✅ گرید واکنش‌گرا با حداقل ۲ ستون */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+/* استایل کارت محصول */
+.product-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    animation: fadeInSlideUp 0.8s forwards ease-out;
+    animation-delay: calc(var(--i) * 0.15s);
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+}
+
+.product-info {
+    padding: 18px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-name {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--text-dark, #2c3e50);
+    margin-bottom: 5px;
+}
+
+.product-code_2 {
+    font-size: 0.85em;
+    background: #f0f0f0;
+    padding: 3px 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    display: inline-block;
+    color: #666;
+}
+
+.product-price_2 {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--accent-pink, #e91e63);
+    margin-bottom: 10px;
+}
+
+/* ✅ توضیحات فقط ۱ خط */
+.product-description {
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    /* نمایش فقط ۱ خط با ... */
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* جلوگیری از سرریز شدن */
+    max-height: 1.4em;
+}
+
+.details-button {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: var(--secondary-blue, #2196f3);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+    margin-top: auto;
+}
+
+.details-button:hover {
+    background-color: #1976d2;
+    transform: translateY(-3px);
+    color: #FFF;
+}
+
+/* انیمیشن */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ✅ واکنش‌گرایی برای نمایش حداقل ۲ کارت */
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr); /* دقیقاً ۲ ستون */
+        gap: 20px;
+        padding: 15px 0;
+    }
+
+    .watches-page-title {
+        font-size: 2.2em;
+    }
+
+    .product-info {
+        padding: 12px;
+    }
+
+    .product-name {
+        font-size: 1em;
+    }
+
+    .product-price_2 {
+        font-size: 1em;
+    }
+
+    .product-description {
+        font-size: 0.8em;
+    }
+
+    .details-button {
+        font-size: 0.85em;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-grid {
+        grid-template-columns: 1fr; /* در موبایل کوچک ۱ ستون */
+        gap: 15px;
+    }
+
+    .product-image {
+        aspect-ratio: 4 / 3;
+    }
+
+    .watches-page-title {
+        font-size: 1.8em;
+    }
+}
+
+/* برای نمایش ۴ ستون در صفحه‌های خیلی بزرگ */
+@media (min-width: 1200px) {
+    .products-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* برای نمایش ۳ ستون در صفحه‌های متوسط-بزرگ */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+</style>
+</head>
+<body>
+    <div class="site-container">
+        <!-- بخش Header -->
+        <header class="main-header">
+            <div class="header-left">
+                <!-- آیکون منوی همبرگری -->
+                <div class="hamburger-menu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <!-- منوی کناری (در ابتدا مخفی است) -->
+                <!-- در فایل index.html، بخش sidebar-menu -->
+                 <nav class="sidebar-menu">
+                    <ul>
+                        <li><a href="#home">خانه</a></li>
+                        <!-- کلاس menu-item-has-arrow اضافه شد و فونت سایز حذف شد -->
+                         <li class="has-submenu menu-item-has-arrow">
+                            <a href="#products-section">محصولات
+                                <!-- فلش دستی اضافه شد -->
+                                 <span class="submenu-arrow">▼</span>
+                                </a>
+                                <ul class="submenu">
+                                    <li><a href="productswatch.html">ساعت</a></li>
+                                    <li><a href="productsbracelet.html">دستبند</a></li>
+                                    <li><a href="productsnecklace.html">گردنبند</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="support.html">پشتیبانی</a></li>
+                            <li><a href="aboutus.html">درباره ما</a></li>
+                             <li><a href="terms.html">سوالات متداول </a></li>
+                        </ul>
+                    </nav>
+            </div>
+            <div class="header-center">
+    <div class="universal-search-container">
+        <input type="text" id="universalSearchInput" class="universal-search-input" placeholder="جستجو در محصولات...">
+        <div id="universalSearchSuggestions" class="universal-search-suggestions"></div>
+        <button id="universalSearchButton" class="universal-search-button">جستجو</button>
+    </div>
+</div>
+
+
+            <div class="header-right">
+                <!-- لوگوی سایت -->
+                <div class="logo-container">
+                    <span class="logo-part2">Action</span><span class="logo-part1">Rare</span>
+                </div>
+                <!-- عکس پروفایل (پیج) -->
+                <div class="profile-picture-container">
+                    <img src="images/RareAction.jpg" alt= "عکس پروفایل" class="profile-picture">
+                </div>
+            </div>
+
+        </header>
+
+        <!-- بخش Hero Section (زیر هدر) -->
+        <section class="hero-section" id="home">
+            <div class="hero-background"></div>
+            <div class="hero-content">
+                <h1>کشف کنید، متفاوت باشید.</h1>
+                <p> به فروشگاه آنلاین اکش خوش اومدید؛ جایی که کیفیت، قیمت مناسب و رضایت شما اولویت ماست.</p>
+                <!-- دکمه تغییر یافته -->
+                <a href="#explore-by-interest" class="cta-button-custom">کشف کلکسیون</a>
+            </div>
+        </section>
+
+        <!-- بخش کاوش بر اساس علاقه -->
+<section id="explore-by-interest" class="explore-section">
+    <h2>کاوش بر اساس علاقه</h2>
+    <div class="explore-categories">
+        <div class="category-item" data-category="watches">
+            <div class="image-wrapper">
+                <a href="productswatch.html">
+                    <img src="images/watchs.jpg" alt="ساعت">
+                </a>
+            </div>
+            <h3>ساعت</h3>
+        </div>
+
+        <div class="category-item" data-category="bracelets">
+            <div class="image-wrapper">
+                <a href="productsbracelet.html">
+                    <img src="images/Bracelets2.jpg" alt="دستبند">
+                </a>
+            </div>
+            <h3>دستبند</h3>
+        </div>
+
+        <div class="category-item" data-category="necklaces">
+            <div class="image-wrapper">
+                <a href="productsnecklace.html">
+                    <img src="images/3011.jpg" alt="گردنبند">
+                </a>
+            </div>
+            <h3>گردنبند</h3>
+        </div>
+    </div>
+</section>
+
+        <main class="watches-page-container">
+            <h1 class="watches-page-title">محصولات ویژه</h1>
+
+            <div class="products-grid">
+                <!-- محصول 1 -->
+                <div class="product-card" style="--i: 1;">
+                    <img src="images/3041.jpg" alt="ساعت مدل B" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name"> گردنبند شیر وخورشید</h3>
+                        <span class="product-code_2">کد: RA-304</span>
+                        <p class="product-price_2">620,000 تومان</p>
+                        <p class="product-description">
+                            خورشیدِ پشتِ شیر؛ میراثی درخشان بر گردن تو
+                        </p>
+                        <a href="necklaces.html?id=گردنبند شیر وخورشید" class="details-button">مشاهده جزئیات</a>
+                    </div>
+                </div>
+
+                <!-- محصول 2 -->
+                <div class="product-card" style="--i: 2;">
+                    <img src="images/1021.jpg" alt="ساعت مدل C" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">ساعت رولکس  </h3>
+                        <span class="product-code_2">کد: RA-102</span>
+                        <p class="product-price_2">1,250,000 تومان</p>
+                        <p class="product-description">
+                            طراحی لوکس با عقربه‌های برجسته و سنگ‌های قیمتی تزئینی. نمادی از ظرافت و تجمل.
+                        </p>
+                        <a href="watches.html?id=ساعت رولکس" class="details-button">مشاهده جزئیات</a>
+                    </div>
+                </div>
+
+                <!-- محصول 3 -->
+                <div class="product-card" style="--i: 1;">
+                    <img src="images/3051.jpg" alt="ساعت مدل B" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name"> گردنبند ایران کوروش</h3>
+                        <span class="product-code_2">کد: RA-305</span>
+                        <p class="product-price_2">390,000 تومان</p>
+                        <p class="product-description">
+                            سرزمین من، بر سینه‌ام؛ طلسمی از جنس افتخار
+                        </p>
+                        <a href="necklaces.html?id=گردنبند ایران کوروش" class="details-button">مشاهده جزئیات</a>
+                    </div>
+                </div>
+
+                <!-- می‌توانید محصولات بیشتری به همین شکل اضافه کنید -->
+
+            </div>
+        </main>
+
+    <!-- بخش داستان ما -->
+<section id="about-us" class="about-section">
+    <div class="about-container">
+        <div class="about-header">
+            <span class="about-badge">✦ پیام ویژه</span>
+            <h2>توجه</h2>
+            <div class="about-divider">
+                <span></span>
+                <span>◆</span>
+                <span></span>
+            </div>
+        </div>
+        <div class="about-content">
+            <p class="about-text primary">
+                دوستان عزیز، در حال حاضر امکان ثبت سفارش و خرید آنلاین از طریق سایت فراهم نیست.
+            </p>
+            <div class="about-info-box">
+                <span class="info-icon">📱</span>
+                <p class="about-text secondary">
+                    برای خرید، کافی است وارد صفحه محصول موردنظر شوید و روی گزینه 
+                    <strong>«خرید از تلگرام»</strong> کلیک کنید. سپس از طریق پشتیبانی، سفارش شما 
+                    در سریع‌ترین زمان ممکن ثبت و پیگیری خواهد شد.
+                </p>
+            </div>
+            <p class="about-text tertiary">
+                از همراهی، صبوری و اعتماد شما صمیمانه سپاسگزاریم. 
+                <span class="heart-icon">💙</span>
+            </p>
+        </div>
+    </div>
+</section>
+
+        <!-- بخش فوتر -->
+    <footer class="main-footer">
+    <div class="footer-top-bar"></div>
+    
+    <div class="footer-content">
+        <!-- بخش درباره ما -->
+        <div class="footer-section about">
+            <div class="footer-logo">
+                <span class="logo-part1">Rare</span><span class="logo-part2">Action</span>
+            </div>
+            <p class="footer-description">
+                Rare Action مجموعه‌ای از اکسسوری‌های خاص و منحصر به فرد. 
+                کیفیت، اصالت و رضایت شما، اولویت ماست.
+            </p>
+            <div class="footer-social">
+                <!-- اینستاگرام -->
+                <a href="https://www.instagram.com/rareaction_2026?igsh=MXd6MGVqdzZ6cGJiag==" target="_blank" class="social-link" aria-label="اینستاگرام" title="اینستاگرام">
+                    <svg viewBox="0 0 24 24" width="22" height="22">
+                        <defs>
+                            <linearGradient id="instaGradFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#f09433"/>
+                                <stop offset="25%" stop-color="#e6683c"/>
+                                <stop offset="60%" stop-color="#dc2743"/>
+                                <stop offset="75%" stop-color="#cc2366"/>
+                                <stop offset="100%" stop-color="#bc1888"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="2" y="2" width="20" height="20" rx="5" fill="url(#instaGradFooter)"/>
+                        <circle cx="12" cy="12" r="4.5" fill="white"/>
+                        <circle cx="17.5" cy="6.5" r="1.5" fill="white"/>
+                        <path d="M2 2L22 22" stroke="white" stroke-width="0.5" opacity="0.1"/>
+                    </svg>
+                </a>
+                
+                <!-- تلگرام -->
+                <a href="https://t.me/rareaction_20261" target="_blank" class="social-link" aria-label="تلگرام" title="تلگرام">
+                    <svg viewBox="0 0 24 24" width="22" height="22">
+                        <path d="M12 0C5.373 0 0 5.373 0 12C0 18.627 5.373 24 12 24C18.627 24 24 18.627 24 12C24 5.373 18.627 0 12 0Z" fill="#0088CC"/>
+                        <path d="M17.0806 7.05116L15.0006 16.0292C14.8726 16.5722 14.5046 16.7422 14.0486 16.4752L10.7826 14.0412L9.21464 15.5542C9.07464 15.6942 8.95564 15.8122 8.68364 15.8122L8.86564 12.4842L14.9156 7.05616C15.1236 6.87316 14.8726 6.77116 14.5966 6.95316L7.05264 11.7662L3.82864 10.7152C3.29864 10.5492 3.28664 10.1882 3.94064 9.92116L16.1496 4.85616C16.5986 4.69016 16.9846 4.96016 16.8376 5.72216L17.0806 7.05116Z" fill="white"/>
+                        <path d="M15.0006 16.0292C14.8726 16.5722 14.5046 16.7422 14.0486 16.4752L10.7826 14.0412L9.21464 15.5542C9.07464 15.6942 8.95564 15.8122 8.68364 15.8122L8.86564 12.4842L14.9156 7.05616C15.1236 6.87316 14.8726 6.77116 14.5966 6.95316L7.05264 11.7662L3.82864 10.7152C3.29864 10.5492 3.28664 10.1882 3.94064 9.92116L16.1496 4.85616C16.5986 4.69016 16.9846 4.96016 16.8376 5.72216L15.0006 16.0292Z" fill="white" opacity="0.4"/>
+                    </svg>
+                </a>
+                
+                <!-- تیک‌تاک -->
+                <a href="https://www.tiktok.com/@rare_action" target="_blank" class="social-link" aria-label="تیک‌تاک" title="تیک‌تاک">
+                    <svg viewBox="0 0 24 24" width="22" height="22">
+                        <rect x="2" y="2" width="20" height="20" rx="4" fill="#000000"/>
+                        <path d="M16.6 5.82C15.92 5.16 15.48 4.3 15.36 3.36L13.8 3.12V9.6V14.16C13.8 16.08 12.24 17.64 10.32 17.64C8.4 17.64 6.84 16.08 6.84 14.16C6.84 12.24 8.4 10.68 10.32 10.68C10.68 10.68 11.04 10.74 11.4 10.86V9.24C11.04 9.18 10.68 9.12 10.32 9.12C7.56 9.12 5.28 11.4 5.28 14.16C5.28 16.92 7.56 19.2 10.32 19.2C13.08 19.2 15.36 16.92 15.36 14.16V8.82C15.96 9.24 16.68 9.54 17.4 9.72V8.1C17.4 7.92 17.4 7.74 17.4 7.56C17.16 6.9 16.92 6.3 16.6 5.82Z" fill="white"/>
+                    </svg>
+                </a>
+                
+                <!-- روبیکا -->
+                <a href="https://rubika.ir/@RareAction_Admin" target="_blank" class="social-link" aria-label="روبیکا" title="روبیکا">
+                    <svg viewBox="0 0 24 24" width="22" height="22">
+                        <rect x="2" y="2" width="20" height="20" rx="4" fill="#E64A19"/>
+                        <path d="M12 6C8.686 6 6 8.686 6 12C6 15.314 8.686 18 12 18C15.314 18 18 15.314 18 12C18 8.686 15.314 6 12 6Z" fill="white"/>
+                        <circle cx="12" cy="12" r="2.5" fill="#E64A19"/>
+                        <circle cx="16" cy="8" r="0.8" fill="white"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- بخش لینک‌های مفید -->
+        <div class="footer-section links">
+            <h3>🔗 لینک‌های مفید</h3>
+            <ul>
+                <li><a href="#home">🏠 خانه</a></li>
+                <li><a href="#explore-by-interest">🛍️ محصولات</a></li>
+                <li><a href="support.html">💬 پشتیبانی</a></li>
+                <li><a href="aboutus.html">ℹ️ درباره ما</a></li>
+                <li><a href="terms.html#faq-section">❓ سوالات متداول</a></li>
+            </ul>
+        </div>
+
+       <!-- بخش تماس با ما -->
+        <div class="footer-section contact">
+            <h3>📞 تماس با ما</h3>
+            <div class="contact-item">
+                <span class="contact-icon">📧</span>
+                <span>erfanrezaei56k@gmail.com</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">📱</span>
+                <span>۰۹۳۷۳۳۶۹۲۱۹</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">🕐</span>
+                <span>پاسخگویی: 9 الی 22</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">📍</span>
+                <span>ایران، خوی</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- بخش پایین فوتر -->
+    <div class="footer-bottom">
+        <span>© 2026 <strong>Rare Action</strong>. تمامی حقوق محفوظ است.</span>
+        <span class="footer-bottom-links">
+            <a href="#">حریم خصوصی</a>
+            <span class="divider">|</span>
+            <a href="#">شرایط استفاده</a>
+        </span>
+    </div>
+</footer>
+    </div>
+
+    <!-- جاوا اسکریپت -->
+    <script src="script.js"></script>
+
+    <!-- بخش کاراکتر انیمه‌ای -->
+<div id="anime-helper" class="anime-helper hidden">
+    <div class="anime-avatar" id="animeAvatar">
+        <!-- دکمه ضربدر (×) - کوچک‌تر -->
+        <button class="close-btn" id="closeBtn" aria-label="بستن">✕</button>
+        
+        <!-- عکس کاراکتر -->
+        <img src="images/guts.png" alt="راهنمای انیمه">
+        
+        <div class="anime-speech-bubble" id="speechBubble">
+            <span id="animeMessage">📱 برای خرید به تلگرام مراجعه کنید!</span>
+        </div>
+    </div>
+</div>
+
+<style>
+/* ============================================
+   استایل کاراکتر انیمه‌ای - هماهنگ با سایت
+   ============================================ */
+
+/* متغیرهای هماهنگ با سایت */
+:root {
+    --primary-purple: #673AB7;
+    --secondary-blue: #3F51B5;
+    --accent-pink: #E91E63;
+    --text-dark: #333;
+    --text-light: #fff;
+    --background-light: #f8f9fa;
+}
+
+.anime-helper {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    cursor: pointer;
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.anime-helper.hidden {
+    transform: translateY(120px) scale(0.5);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.anime-helper.visible {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+/* ============================================
+   آواتار - هاور فقط بزرگ میشه (خم نمیشه)
+   ============================================ */
+.anime-avatar {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, var(--primary-purple), var(--secondary-blue));
+    padding: 4px;
+    box-shadow: 0 8px 32px rgba(103, 58, 183, 0.4), 0 0 0 4px rgba(103, 58, 183, 0.1);
+    animation: float-avatar 3s ease-in-out infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* هاور فقط بزرگ میشه - بدون خم شدن */
+.anime-avatar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 40px rgba(103, 58, 183, 0.6), 0 0 0 6px rgba(103, 58, 183, 0.15);
+}
+
+.anime-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #1a1a2e;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+
+/* ============================================
+   دکمه ضربدر (×) - کوچک‌تر و بدون دایره زیرش
+   ============================================ */
+.close-btn {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 22px;
+    height: 22px;
+    background: #e74c3c;
+    color: white;
+    border: 2px solid #1a1a2e;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(231, 76, 60, 0.3);
+    line-height: 1;
+    padding: 0;
+}
+
+.close-btn:hover {
+    transform: scale(1.15);
+    background: #c0392b;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.5);
+}
+
+.close-btn:active {
+    transform: scale(0.9);
+}
+
+/* حذف دایره نبض‌دار زیر ضربدر */
+/* دیگر ::before برای نبض وجود ندارد */
+
+/* ============================================
+   حباب گفتار - با فاصله از راست
+   ============================================ */
+.anime-speech-bubble {
+    position: absolute;
+    bottom: 95px;
+    right: 50%;
+    transform: translateX(50%);
+    background: linear-gradient(145deg, #1a0a0a, #2d0a1a);
+    color: #ff9a9a;
+    padding: 14px 22px;
+    border-radius: 20px 20px 4px 20px;
+    font-size: 0.9rem;
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+    max-width: 280px;
+    min-width: 170px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(233, 30, 99, 0.15);
+    border: 1px solid rgba(233, 30, 99, 0.2);
+    line-height: 1.8;
+    opacity: 0;
+    transform: translateX(50%) translateY(10px) scale(0.9);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    margin-right: 30px; /* فاصله از راست */
+}
+
+/* هاور روی آواتار - حباب نمایش داده میشه */
+.anime-avatar:hover .anime-speech-bubble {
+    opacity: 1;
+    transform: translateX(50%) translateY(0) scale(1);
+}
+
+/* مثلث حباب */
+.anime-speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    right: 35px;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 14px solid #1a0a0a;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+/* ============================================
+   انیمیشن شناور
+   ============================================ */
+@keyframes float-avatar {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+/* ============================================
+   حالت توجه
+   ============================================ */
+.anime-helper.attention .anime-avatar {
+    animation: float-avatar 3s ease-in-out infinite;
+    box-shadow: 0 8px 40px rgba(233, 30, 99, 0.3), 0 0 0 4px rgba(233, 30, 99, 0.15);
+}
+
+.anime-helper.attention .anime-speech-bubble {
+    background: linear-gradient(145deg, #1a0a0a, #2d0a1a);
+    border-color: rgba(233, 30, 99, 0.3);
+}
+
+/* ============================================
+   ریسپانسیو - هماهنگ با site-container
+   ============================================ */
+
+/* کامپیوتر */
+@media (min-width: 992px) {
+    .anime-avatar {
+        width: 85px;
+        height: 85px;
+    }
+    .anime-speech-bubble {
+        font-size: 0.95rem;
+        padding: 16px 24px;
+        max-width: 320px;
+        min-width: 190px;
+        bottom: 105px;
+        margin-right: 25px;
+    }
+    .close-btn {
+        width: 24px;
+        height: 24px;
+        font-size: 14px;
+        top: -9px;
+        right: -9px;
+    }
+}
+
+/* تبلت و موبایل بزرگ */
+@media (max-width: 991px) and (min-width: 577px) {
+    .anime-helper {
+        bottom: 25px;
+        right: 25px;
+    }
+    .anime-avatar {
+        width: 70px;
+        height: 70px;
+    }
+    .anime-speech-bubble {
+        font-size: 0.85rem;
+        padding: 12px 18px;
+        max-width: 240px;
+        min-width: 150px;
+        bottom: 85px;
+        margin-right: 20px;
+    }
+    .close-btn {
+        width: 22px;
+        height: 22px;
+        font-size: 12px;
+        top: -8px;
+        right: -8px;
+    }
+}
+
+/* گوشی */
+@media (max-width: 576px) {
+    .anime-helper {
+        bottom: 15px;
+        right: 15px;
+    }
+    .anime-avatar {
+        width: 55px;
+        height: 55px;
+    }
+    .anime-speech-bubble {
+        font-size: 0.7rem;
+        padding: 10px 14px;
+        max-width: 180px;
+        min-width: 110px;
+        bottom: 68px;
+        margin-right: 15px;
+    }
+    .close-btn {
+        width: 20px;
+        height: 20px;
+        font-size: 11px;
+        top: -7px;
+        right: -7px;
+        border-width: 1.5px;
+    }
+}
+</style>
+
+<script>
+    (function() {
+        'use strict';
+
+        // ============================================
+        // ۷ پیام متفاوت - خرید از تلگرام
+        // ============================================
+
+        const ATTENTION_MESSAGES = [
+            '📱 برای خرید به تلگرام مراجعه کنید!',
+            '🛒 خرید از طریق تلگرام انجام میشود!',
+            '💬 برای خرید به پیج تلگرام ما بروید!',
+            '📞 جهت خرید با پشتیبانی تلگرام تماس بگیرید!',
+            '🔔 خرید محصولات از طریق تلگرام امکان‌پذیر است!',
+            '✨ برای ثبت سفارش به تلگرام مراجعه کنید!',
+            '💎 خرید از تلگرام با بهترین قیمت!'
+        ];
+
+        // ============================================
+
+        const helper = document.getElementById('anime-helper');
+        const avatar = document.getElementById('animeAvatar');
+        const messageEl = document.getElementById('animeMessage');
+        const closeBtn = document.getElementById('closeBtn');
+
+        const MESSAGE_INTERVAL = 7000;    // 7 ثانیه
+        const AUTO_HIDE_TIME = 45000;      // 45 ثانیه
+        const FIRST_DELAY = 3000;          // 3 ثانیه
+
+        let isVisible = false;
+        let isClosed = false;
+        let messageInterval = null;
+        let autoHideTimer = null;
+        let currentMessageIndex = 0;
+
+        function getNextMessage() {
+            const msg = ATTENTION_MESSAGES[currentMessageIndex % ATTENTION_MESSAGES.length];
+            currentMessageIndex++;
+            return msg;
+        }
+
+        function showNextMessage() {
+            if (!isVisible) return;
+            const msg = getNextMessage();
+            messageEl.textContent = msg;
+        }
+
+        function showHelper() {
+            if (isVisible || isClosed) return;
+            isVisible = true;
+
+            helper.classList.remove('hidden');
+            helper.classList.add('visible', 'attention');
+
+            currentMessageIndex = 0;
+            const msg = getNextMessage();
+            messageEl.textContent = msg;
+
+            // نمایش حباب
+            const bubble = document.querySelector('.anime-speech-bubble');
+            if (bubble) {
+                bubble.style.opacity = '1';
+                bubble.style.transform = 'translateX(50%) translateY(0) scale(1)';
+            }
+
+            // چرخه پیام‌ها (هر 7 ثانیه)
+            if (messageInterval) clearInterval(messageInterval);
+            messageInterval = setInterval(function() {
+                if (isVisible) {
+                    showNextMessage();
+                }
+            }, MESSAGE_INTERVAL);
+
+            // حذف خودکار بعد 45 ثانیه
+            if (autoHideTimer) clearTimeout(autoHideTimer);
+            autoHideTimer = setTimeout(function() {
+                hideHelper();
+            }, AUTO_HIDE_TIME);
+        }
+
+        function hideHelper() {
+            if (!isVisible) return;
+            isVisible = false;
+            isClosed = true;
+
+            helper.classList.remove('visible', 'attention');
+            helper.classList.add('hidden');
+
+            const bubble = document.querySelector('.anime-speech-bubble');
+            if (bubble) {
+                bubble.style.opacity = '0';
+                bubble.style.transform = 'translateX(50%) translateY(10px) scale(0.9)';
+            }
+
+            if (messageInterval) {
+                clearInterval(messageInterval);
+                messageInterval = null;
+            }
+            if (autoHideTimer) {
+                clearTimeout(autoHideTimer);
+                autoHideTimer = null;
+            }
+        }
+
+        // ============================================
+        // کلیک روی عکس → اسکرول به بخش توجه
+        // ============================================
+
+        function handleAvatarClick(e) {
+            if (e.target.closest('.close-btn')) return;
+
+            const aboutSection = document.querySelector('.about-section');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                aboutSection.style.transition = 'box-shadow 0.5s ease, border 0.5s ease';
+                aboutSection.style.boxShadow = '0 0 60px rgba(233, 30, 99, 0.3), inset 0 0 40px rgba(233, 30, 99, 0.05)';
+                aboutSection.style.border = '2px solid rgba(233, 30, 99, 0.15)';
+                setTimeout(function() {
+                    aboutSection.style.boxShadow = '';
+                    aboutSection.style.border = '';
+                }, 2500);
+            }
+
+            const avatarEl = document.querySelector('.anime-avatar');
+            if (avatarEl) {
+                avatarEl.style.transform = 'scale(0.85)';
+                setTimeout(function() {
+                    avatarEl.style.transform = '';
+                }, 200);
+            }
+        }
+
+        // ============================================
+        // دکمه ضربدر
+        // ============================================
+
+        function handleClose(e) {
+            e.stopPropagation();
+            hideHelper();
+        }
+
+        // ============================================
+        // ثبت رویدادها
+        // ============================================
+
+        if (avatar) {
+            avatar.addEventListener('click', handleAvatarClick);
+        }
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', handleClose);
+        }
+
+        // ============================================
+        // راه‌اندازی
+        // ============================================
+
+        isClosed = false;
+
+        setTimeout(function() {
+            showHelper();
+        }, FIRST_DELAY);
+
+        // ============================================
+        // API عمومی
+        // ============================================
+
+        window.showAnimeHelper = showHelper;
+        window.hideAnimeHelper = hideHelper;
+
+        console.log('🎀 کاراکتر انیمه‌ای با موفقیت بارگذاری شد!');
+        console.log('📱 ۷ پیام متفاوت - هر ۷ ثانیه تغییر');
+        console.log('⏱️  بعد ۴۵ ثانیه خودکار حذف');
+        console.log('❌  دکمه ضربدر برای بستن دستی');
+    })();
+</script>
+
+    <style>
+        /* ============================================
+           ✅ اطلاعیه موجودی محصولات - نسخه اصلاح‌شده
+           ============================================ */
+
+        /* پس‌زمینه تاریک - همیشه بالای همه چیز */
+        #inventory-notice {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 999999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            animation: noticeFadeIn 0.5s ease;
+            padding: 20px;
+        }
+
+        /* وقتی اطلاعیه بسته شد */
+        #inventory-notice.closed {
+            display: none !important;
+        }
+
+        /* کانتینر اصلی اطلاعیه */
+        .notice-container {
+            position: relative;
+            max-width: 580px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: linear-gradient(145deg, #1a1a3e, #0f1a3a);
+            border-radius: 28px;
+            padding: 40px 35px 35px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(99, 102, 241, 0.15);
+            animation: noticeSlideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(99, 102, 241, 0.12);
+        }
+
+        /* افکت نورانی */
+        .notice-container::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .notice-container::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .notice-container::-webkit-scrollbar {
+            width: 4px;
+        }
+        .notice-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .notice-container::-webkit-scrollbar-thumb {
+            background: rgba(99, 102, 241, 0.3);
+            border-radius: 10px;
+        }
+
+        /* دکمه بستن (ضربدر) */
+        .notice-close {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            color: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .notice-close:hover {
+            background: rgba(231, 76, 60, 0.2);
+            border-color: rgba(231, 76, 60, 0.3);
+            color: #e74c3c;
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        .notice-close svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* محتوای اطلاعیه */
+        .notice-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* نوار بالایی */
+        .gradient-bar {
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #a855f7);
+            border-radius: 10px;
+            margin: 0 auto 20px;
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.2);
+        }
+
+        /* آیکون */
+        .notice-icon {
+            width: 76px;
+            height: 76px;
+            margin: 0 auto 18px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(139, 92, 246, 0.12));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(99, 102, 241, 0.15);
+            animation: noticePulse 2s ease-in-out infinite;
+            backdrop-filter: blur(10px);
+        }
+
+        .notice-icon svg {
+            color: #818cf8;
+            width: 38px;
+            height: 38px;
+        }
+
+        /* عنوان */
+        .notice-title {
+            font-family: 'Vazirmatn', Tahoma, sans-serif;
+            font-size: 1.9rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+            background: linear-gradient(135deg, #818cf8, #a78bfa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* زیرنویس */
+        .notice-sub {
+            font-family: 'Vazirmatn', Tahoma, sans-serif;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 400;
+            margin-bottom: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        /* خط جداکننده */
+        .divider-custom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin: 0 auto 18px;
+        }
+
+        .divider-custom .line {
+            width: 35px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.2), transparent);
+        }
+
+        .divider-custom .dot {
+            width: 6px;
+            height: 6px;
+            background: #818cf8;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+
+        /* متن */
+        .notice-body {
+            color: rgba(255, 255, 255, 0.85);
+            font-family: 'Vazirmatn', Tahoma, sans-serif;
+            line-height: 2.2;
+            font-size: 0.95rem;
+        }
+
+        .notice-message {
+            background: rgba(99, 102, 241, 0.04);
+            border-radius: 16px;
+            padding: 18px 22px;
+            margin-bottom: 16px;
+            border-right: 3px solid #818cf8;
+            text-align: right;
+            backdrop-filter: blur(10px);
+        }
+
+        .notice-message p {
+            margin-bottom: 8px;
+        }
+
+        .notice-message p:last-child {
+            margin-bottom: 0;
+        }
+
+        .notice-message strong {
+            color: #a78bfa;
+            font-weight: 700;
+        }
+
+        .notice-footer {
+            background: rgba(139, 92, 246, 0.06);
+            border-radius: 16px;
+            padding: 16px 22px;
+            font-size: 0.92rem;
+            color: rgba(255, 255, 255, 0.75);
+            border-left: 3px solid #8b5cf6;
+            text-align: right;
+        }
+
+        .notice-footer p {
+            margin: 0;
+        }
+
+        .highlight-badge {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.12);
+            padding: 2px 14px;
+            border-radius: 30px;
+            font-weight: 600;
+            color: #a78bfa;
+            font-size: 0.88rem;
+            border: 1px solid rgba(99, 102, 241, 0.12);
+        }
+
+        /* دکمه تأیید */
+        .notice-confirm {
+            margin-top: 28px;
+            padding: 16px 50px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border: none;
+            border-radius: 16px;
+            color: #fff;
+            font-family: 'Vazirmatn', Tahoma, sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.3);
+            position: relative;
+            width: 100%;
+        }
+
+        .notice-confirm:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 45px rgba(99, 102, 241, 0.45);
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+        }
+
+        .notice-confirm:active {
+            transform: translateY(0) scale(0.97);
+        }
+
+        .notice-confirm .icon {
+            margin-left: 8px;
+        }
+
+        /* ============================================
+           انیمیشن‌ها
+           ============================================ */
+        @keyframes noticeFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes noticeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.92);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes noticePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* ============================================
+           واکنش‌گرایی
+           ============================================ */
+        @media (max-width: 768px) {
+            .notice-container {
+                padding: 30px 22px 28px;
+                border-radius: 22px;
+            }
+            .notice-title {
+                font-size: 1.5rem;
+            }
+            .notice-body {
+                font-size: 0.88rem;
+            }
+            .notice-icon {
+                width: 60px;
+                height: 60px;
+            }
+            .notice-icon svg {
+                width: 30px;
+                height: 30px;
+            }
+            .notice-close {
+                width: 32px;
+                height: 32px;
+                top: 12px;
+                left: 12px;
+            }
+            .notice-close svg {
+                width: 18px;
+                height: 18px;
+            }
+            .notice-confirm {
+                padding: 14px 35px;
+                font-size: 0.95rem;
+            }
+            .gradient-bar {
+                width: 55px;
+                height: 3px;
+            }
+            .notice-sub {
+                font-size: 0.82rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .notice-container {
+                padding: 22px 14px 20px;
+                border-radius: 18px;
+            }
+            .notice-title {
+                font-size: 1.2rem;
+            }
+            .notice-body {
+                font-size: 0.82rem;
+                line-height: 1.9;
+            }
+            .notice-message,
+            .notice-footer {
+                padding: 14px 16px;
+            }
+            .notice-icon {
+                width: 50px;
+                height: 50px;
+                margin-bottom: 14px;
+            }
+            .notice-icon svg {
+                width: 26px;
+                height: 26px;
+            }
+            .notice-confirm {
+                padding: 12px 28px;
+                font-size: 0.85rem;
+                margin-top: 20px;
+                border-radius: 12px;
+            }
+            .notice-close {
+                width: 28px;
+                height: 28px;
+                top: 10px;
+                left: 10px;
+            }
+            .notice-close svg {
+                width: 16px;
+                height: 16px;
+            }
+            .gradient-bar {
+                width: 45px;
+                height: 3px;
+                margin-bottom: 14px;
+            }
+            .divider-custom .line {
+                width: 25px;
+            }
+            .divider-custom .dot {
+                width: 5px;
+                height: 5px;
+            }
+            .notice-sub {
+                font-size: 0.75rem;
+                margin-bottom: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+    ✅ اطلاعیه موجودی محصولات
+    ============================================ -->
+    <div id="inventory-notice">
+        <div class="notice-container">
+            <!-- دکمه بستن -->
+            <button class="notice-close" id="noticeClose" aria-label="بستن اطلاعیه">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
+                </svg>
+            </button>
+
+            <div class="notice-content">
+                <!-- نوار بالایی -->
+                <div class="gradient-bar"></div>
+
+                <!-- آیکون -->
+                <div class="notice-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+                    </svg>
+                </div>
+
+                <!-- عنوان -->
+                <h2 class="notice-title">اطلاعیه موجودی</h2>
+                <p class="notice-sub">مشتریان گرامی، ضمن عرض سلام و احترام</p>
+
+                <!-- خط جداکننده -->
+                <div class="divider-custom">
+                    <span class="line"></span>
+                    <span class="dot"></span>
+                    <span class="line"></span>
+                </div>
+
+                <!-- متن -->
+                <div class="notice-body">
+                    <div class="notice-message">
+                        <p>
+                            به اطلاع می‌رسانیم در حال حاضر <strong>صرفاً گردنبندهای</strong> مجموعه 
+                            در سایت قابل سفارش هستند. موجودی <strong>ساعت</strong> و <strong>دستبند</strong>ها 
+                            به اتمام رسیده و فعلاً امکان عرضه این محصولات فراهم نیست.
+                        </p>
+                    </div>
+
+                    <div class="notice-footer">
+                        <p>
+                            شایان ذکر است با استقبال و حمایت شما عزیزان از گردنبندهای فعلی، 
+                            مسیر تأمین و عرضه ساعت‌ها و دستبندهای جدید با 
+                            <span class="highlight-badge">کیفیتی بالاتر</span> و 
+                            <span class="highlight-badge">ظاهری شکیل‌تر</span> هموار خواهد شد.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- دکمه تأیید -->
+                <button class="notice-confirm" id="noticeConfirm">
+                    <span class="icon">✨</span> فهمیدم
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+    اسکریپت - هربار که صفحه باز بشه نمایش داده میشه
+    ============================================ -->
+    <script>
+        (function() {
+            'use strict';
+
+            const notice = document.getElementById('inventory-notice');
+            const closeBtn = document.getElementById('noticeClose');
+            const confirmBtn = document.getElementById('noticeConfirm');
+
+            // ====== بستن اطلاعیه ======
+            function closeNotice() {
+                notice.classList.add('closed');
+            }
+
+            // ====== رویدادها ======
+            closeBtn.addEventListener('click', closeNotice);
+            confirmBtn.addEventListener('click', closeNotice);
+
+            // کلیک روی پس‌زمینه
+            notice.addEventListener('click', function(e) {
+                if (e.target === notice) {
+                    closeNotice();
+                }
+            });
+
+            // کلید Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeNotice();
+                }
+            });
+
+            // ====== اطلاعیه همیشه نمایش داده میشه ======
+            // حذف کلاس closed در صورت وجود
+            notice.classList.remove('closed');
+
+            console.log('📢 اطلاعیه موجودی با موفقیت بارگذاری شد.');
+            console.log('✅ هر بار که صفحه باز شود، اطلاعیه نمایش داده می‌شود.');
+
+        })();
+    </script>
+
+</body>
+</html>

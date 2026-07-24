@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قوانین و مقررات و سوالات متداول | Rare Action</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           استایل‌های اختصاصی صفحه قوانین و سوالات متداول
+           ============================================ */
+
+        :root {
+            --accent-pink: #e91e63;
+            --primary-purple: #673ab7;
+            --secondary-blue: #2196f3;
+            -a-text-light: #555;
+            --text-dark: #333;
+            --background-light: #f4f7f6;
+            --shadow-light: rgba(0,0,0,0.1);
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', Tahoma, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .site-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ============================================
+           استایل‌های صفحه
+           ============================================ */
+
+        .page-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 30px;
+            background: linear-gradient(145deg, #1a0a0a, #2d0a1a);
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(233, 30, 99, 0.1);
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(233, 30, 99, 0.3);
+        }
+
+        .page-header h1 {
+            font-size: 2.8em;
+            background: linear-gradient(135deg, #e91e63, #6a1b9a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .page-header p {
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           بخش قوانین و مقررات
+           ============================================ */
+
+        .terms-section {
+            margin-bottom: 50px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .terms-section h2 {
+            font-size: 1.6em;
+            color: #e91e63;
+            margin-bottom: 20px;
+            border-bottom: 2px dashed rgba(233, 30, 99, 0.2);
+            padding-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .terms-section h2:first-of-type {
+            color: #6a1b9a;
+            border-bottom-color: rgba(106, 27, 154, 0.2);
+        }
+
+        .terms-section ul {
+            list-style: none;
+            padding-right: 0;
+            margin-bottom: 20px;
+        }
+
+        .terms-section ul li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-right: 30px;
+            font-size: 1.05em;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+
+        .terms-section ul li::before {
+            content: '\f058';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #e91e63;
+            position: absolute;
+            right: 0;
+            top: 5px;
+            font-size: 1em;
+        }
+
+        .terms-section ol {
+            padding-right: 20px;
+            margin-bottom: 20px;
+        }
+
+        .terms-section ol li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+
+        .terms-section p {
+            font-size: 1.05em;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .terms-section .highlight {
+            color: #e91e63;
+            font-weight: 600;
+        }
+
+        .terms-section .telegram-link {
+            display: inline-block;
+            background: #0088cc;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .terms-section .telegram-link:hover {
+            background: #006699;
+            transform: translateY(-2px);
+        }
+
+        /* ============================================
+           بخش سوالات متداول (FAQ) - اصلاح‌شده
+           ============================================ */
+
+        .faq-section {
+            margin-top: 50px;
+        }
+
+        .faq-section > h2 {
+            font-size: 2em;
+            text-align: center;
+            background: linear-gradient(135deg, #e91e63, #6a1b9a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(233, 30, 99, 0.2);
+        }
+
+        .faq-question {
+            padding: 18px 25px;
+            font-size: 1.15em;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-question i {
+            font-size: 1.1em;
+            color: #e91e63;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-right: 15px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-question {
+            background: rgba(233, 30, 99, 0.05);
+            border-bottom: 1px solid rgba(233, 30, 99, 0.1);
+        }
+
+        /* ✅ اصلاح مهم: ارتفاع به اندازه متن */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                        padding 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.3s ease;
+            font-size: 1.05em;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            padding: 0 25px;
+            opacity: 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 800px; /* مقدار زیاد برای نمایش کامل متن */
+            padding: 20px 25px;
+            opacity: 1;
+        }
+
+        .faq-answer strong {
+            color: #e91e63;
+        }
+
+        .faq-answer .telegram-btn-small {
+            display: inline-block;
+            background: #0088cc;
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-top: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer .telegram-btn-small:hover {
+            background: #006699;
+            transform: translateY(-2px);
+        }
+
+        /* ============================================
+           دکمه تلگرام در پایین صفحه
+           ============================================ */
+
+        .telegram-footer-btn {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .telegram-footer-btn a {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #0088cc, #006699);
+            color: #fff;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(0, 136, 204, 0.3);
+        }
+
+        .telegram-footer-btn a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 45px rgba(0, 136, 204, 0.5);
+        }
+
+        .telegram-footer-btn a svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        /* ============================================
+           واکنش‌گرایی
+           ============================================ */
+
+        @media (max-width: 768px) {
+            .page-container {
+                padding: 20px;
+                margin: 20px 10px;
+                border-radius: 16px;
+            }
+
+            .page-header h1 {
+                font-size: 2em;
+            }
+
+            .terms-section h2,
+            .faq-section > h2 {
+                font-size: 1.4em;
+            }
+
+            .faq-question {
+                font-size: 1em;
+                padding: 14px 18px;
+            }
+
+            .faq-answer {
+                font-size: 0.95em;
+            }
+
+            .faq-item.active .faq-answer {
+                padding: 16px 18px;
+            }
+
+            .terms-section ul li,
+            .terms-section ol li,
+            .terms-section p {
+                font-size: 0.95em;
+            }
+
+            .telegram-footer-btn a {
+                padding: 14px 25px;
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-container {
+                padding: 15px;
+                margin: 10px 5px;
+                border-radius: 12px;
+            }
+
+            .page-header h1 {
+                font-size: 1.6em;
+            }
+
+            .terms-section {
+                padding: 20px 15px;
+            }
+
+            .terms-section h2,
+            .faq-section > h2 {
+                font-size: 1.2em;
+            }
+
+            .faq-question {
+                font-size: 0.9em;
+                padding: 12px 14px;
+            }
+
+            .faq-answer {
+                font-size: 0.85em;
+            }
+
+            .faq-item.active .faq-answer {
+                padding: 14px;
+            }
+
+            .telegram-footer-btn a {
+                padding: 12px 20px;
+                font-size: 0.9em;
+                gap: 8px;
+            }
+
+            .telegram-footer-btn a svg {
+                width: 22px;
+                height: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="site-container">
+
+        <!-- ============================================
+        هدر سایت
+        ============================================ -->
+        <header class="main-header">
+            <div class="header-left">
+                <div class="hamburger-menu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+
+                <nav class="sidebar-menu">
+                    <ul>
+                        <li><a href="index.html">خانه</a></li>
+                        <li class="has-submenu menu-item-has-arrow">
+                            <a href="#products-section">
+                                محصولات
+                                <span class="submenu-arrow">▼</span>
+                            </a>
+                            <ul class="submenu">
+                                <li><a href="productswatch.html">ساعت</a></li>
+                                <li><a href="productsbracelet.html">دستبند</a></li>
+                                <li><a href="productsnecklace.html">گردنبند</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="support.html">پشتیبانی</a></li>
+                        <li><a href="aboutus.html">درباره ما</a></li>
+                        <li><a href="terms.html">سوالات متداول</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="header-center">
+                <div class="universal-search-container">
+                    <input type="text" id="universalSearchInput" class="universal-search-input" placeholder="جستجو در محصولات...">
+                    <div id="universalSearchSuggestions" class="universal-search-suggestions"></div>
+                    <button id="universalSearchButton" class="universal-search-button">جستجو</button>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <div class="logo-container">
+                    <span class="logo-part2">Action</span><span class="logo-part1">Rare</span>
+                </div>
+                <div class="profile-picture-container">
+                    <img src="images/RareAction.jpg" alt="عکس پروفایل" class="profile-picture">
+                </div>
+            </div>
+        </header>
+
+        <!-- ============================================
+        محتوای اصلی صفحه
+        ============================================ -->
+        <div class="page-container">
+
+            <!-- هدر صفحه -->
+            <header class="page-header">
+                <h1>قوانین و مقررات</h1>
+                <p>لطفاً پیش از استفاده از خدمات ما، قوانین و مقررات را به دقت مطالعه فرمایید.</p>
+            </header>
+
+            <!-- ============================================
+            بخش قوانین و مقررات
+            ============================================ -->
+            <section class="terms-section">
+
+                <h2>مقدمه</h2>
+                <p>
+                    به فروشگاه آنلاین <span class="highlight">Rare Action</span> خوش آمدید. 
+                    ما در این مجموعه، اکسسوری‌های خاص و باکیفیت را با قیمت مناسب به شما عزیزان ارائه می‌دهیم. 
+                    لطفاً پیش از ثبت سفارش، قوانین زیر را مطالعه فرمایید.
+                </p>
+
+                <h2>روش خرید</h2>
+                <ul>
+                    <li>تمامی سفارشات از طریق <span class="highlight">تلگرام</span> ثبت و پیگیری می‌شوند.</li>
+                    <li>برای خرید، کافی است وارد صفحه محصول موردنظر شوید و روی دکمه <span class="highlight">«خرید از تلگرام»</span> کلیک کنید.</li>
+                    <li>پس از کلیک، به تلگرام ما هدایت می‌شوید و می‌توانید سفارش خود را ثبت کنید.</li>
+                    <li>هیچ گونه درگاه پرداخت آنلاین در سایت وجود ندارد و تمامی مراحل خرید از طریق تلگرام انجام می‌شود.</li>
+                </ul>
+
+                <h2>ارسال و تحویل</h2>
+                <ul>
+                    <li>سفارشات پس از تایید و واریز مبلغ، در سریع‌ترین زمان ممکن ارسال می‌شوند.</li>
+                    <li>هزینه ارسال بر عهده خریدار بوده و بر اساس وزن و مقصد محاسبه می‌شود.</li>
+                    <li>کد رهگیری مرسوله پس از ارسال، از طریق تلگرام در اختیار شما قرار می‌گیرد.</li>
+                </ul>
+
+                <h2>بازگشت کالا</h2>
+                <ul>
+                    <li>در صورت وجود هرگونه نقص یا مغایرت در محصول، می‌توانید حداکثر <span class="highlight">3 روز</span> پس از تحویل، درخواست بازگشت کالا دهید.</li>
+                    <li>کالا باید به همان بسته‌بندی اولیه و بدون آسیب برگشت داده شود.</li>
+                    <li>هزینه بازگشت کالا در صورت نقص از طرف فروشنده، بر عهده ما خواهد بود.</li>
+                </ul>
+
+                <h2>حریم خصوصی</h2>
+                <ul>
+                    <li>اطلاعات شما نزد ما محفوظ بوده و هیچ‌گاه به اشخاص ثالث فروخته یا منتقل نمی‌شود.</li>
+                    <li>ما فقط از اطلاعات شما برای پیگیری سفارشات و ارتباط با شما استفاده می‌کنیم.</li>
+                </ul>
+
+                <h2>ارتباط با پشتیبانی</h2>
+                <ul>
+                    <li>برای ارتباط با پشتیبانی، می‌توانید از طریق تلگرام ما اقدام کنید.</li>
+                    <li>همچنین می‌توانید از طریق ایمیل <span class="highlight">erfanrezaei56k@gmail.com</span> با ما در ارتباط باشید.</li>
+                </ul>
+
+                <p style="text-align: center; margin-top: 20px;">
+                    <a href="https://t.me/rareaction_20261" target="_blank" class="telegram-link">
+                        <i class="fab fa-telegram"></i> ارتباط با ما در تلگرام
+                    </a>
+                </p>
+
+            </section>
+
+            <!-- ============================================
+            بخش سوالات متداول (FAQ) - ۸ سوال
+            ============================================ -->
+            <section class="faq-section">
+                <h2>❓ سوالات متداول</h2>
+
+                <!-- سوال ۱ -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>چگونه می‌توانم از این سایت خرید کنم؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            خرید از سایت بسیار ساده است! کافی است وارد صفحه محصول مورد نظر شوید و روی دکمه 
+                            <strong>«خرید از تلگرام»</strong> کلیک کنید. سپس به پیج تلگرام ما هدایت می‌شوید و 
+                            می‌توانید سفارش خود را ثبت کنید. هیچ نیاز به ثبت‌نام یا پرداخت آنلاین در سایت نیست.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- سوال ۲ -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>چرا فقط از طریق تلگرام فروش دارید؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            فروش از طریق تلگرام به ما این امکان را می‌دهد که <strong>ارتباط مستقیم</strong> و 
+                            <strong>شخصی‌تری</strong> با شما مشتریان عزیز داشته باشیم. همچنین می‌توانیم 
+                            پاسخگوی سوالات شما در سریع‌ترین زمان باشیم و تجربه خریدی مطمئن و راحت را برایتان فراهم کنیم.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- سوال ۳ -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>چطور می‌توانم به کیفیت محصولات اعتماد کنم؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            <strong>Rare Action</strong> با افتخار بیش از <strong>1 سال</strong> سابقه درخشان در زمینه 
+                            فروش اکسسوری‌های خاص دارد. ما به کیفیت محصولات خود ایمان داریم و <strong>رضایت مشتری</strong> 
+                            اولویت اصلی ماست. همچنین می‌توانید نمونه کارها و نظرات مشتریان قبلی را در پیج ما مشاهده کنید.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- سوال ۴ -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>آیا امکان پرداخت در محل وجود دارد؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            خیر، در حال حاضر <strong>فروش ما فقط به صورت غیرحضوری</strong> و از طریق تلگرام انجام می‌شود. 
+                            پس از ثبت سفارش، اطلاعات پرداخت از طریق تلگرام به شما ارسال خواهد شد و پس از واریز مبلغ، 
+                            سفارش شما ارسال می‌گردد.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- سوال ۵ -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>چگونه می‌توانم سفارشم را پیگیری کنم؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            پس از ارسال سفارش، <strong>کد رهگیری</strong> از طریق تلگرام به شما ارسال می‌شود. 
+                            همچنین می‌توانید در هر زمان با پشتیبانی ما در تلگرام ارتباط بگیرید و وضعیت سفارش خود را جویا شوید.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- سوال ۶ -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>آیا امکان بازگشت کالا وجود دارد؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            بله، در صورت وجود <strong>نقص فنی</strong> یا <strong>مغایرت</strong> در محصول، 
+                            شما <strong>3 روز</strong> فرصت دارید تا درخواست بازگشت کالا را ثبت کنید. 
+                            کالا باید به همان بسته‌بندی اولیه برگشت داده شود. هزینه بازگشت در این موارد بر عهده ماست.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- سوال ۷ -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>چگونه با پشتیبانی تماس بگیرم؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            بهترین راه ارتباط با پشتیبانی، از طریق <strong>تلگرام</strong> است. 
+                            همچنین می‌توانید از طریق ایمیل <strong>erfanrezaei56k@gmail.com</strong> 
+                            یا شماره تماس <strong>۰۹۳۷۳۳۶۹۲۱۹</strong> با ما در ارتباط باشید.
+                            <br>
+                            <a href="https://t.me/rareaction_20261" target="_blank" class="telegram-btn-small">
+                                <i class="fab fa-telegram"></i> ارتباط در تلگرام
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- سوال ۸ -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>چقدر زمان می‌برد تا سفارشم برسد؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            زمان ارسال بستگی به <strong>موقعیت مکانی</strong> شما و <strong>روش ارسال</strong> دارد. 
+                            معمولاً سفارشات در بازه <strong>۲ تا ۵ روز کاری</strong> به دست شما می‌رسد. 
+                            پس از ثبت سفارش، زمان دقیق تحویل به شما اعلام می‌شود.
+                        </p>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ============================================
+            دکمه تلگرام در پایین صفحه
+            ============================================ -->
+            <div class="telegram-footer-btn">
+                <a href="https://t.me/rareaction_20261" target="_blank">
+                    <svg viewBox="0 0 24 24" width="28" height="28">
+                        <path d="M12 0C5.373 0 0 5.373 0 12C0 18.627 5.373 24 12 24C18.627 24 24 18.627 24 12C24 5.373 18.627 0 12 0Z" fill="#0088CC"/>
+                        <path d="M17.0806 7.05116L15.0006 16.0292C14.8726 16.5722 14.5046 16.7422 14.0486 16.4752L10.7826 14.0412L9.21464 15.5542C9.07464 15.6942 8.95564 15.8122 8.68364 15.8122L8.86564 12.4842L14.9156 7.05616C15.1236 6.87316 14.8726 6.77116 14.5966 6.95316L7.05264 11.7662L3.82864 10.7152C3.29864 10.5492 3.28664 10.1882 3.94064 9.92116L16.1496 4.85616C16.5986 4.69016 16.9846 4.96016 16.8376 5.72216L17.0806 7.05116Z" fill="white"/>
+                    </svg>
+                    خرید از تلگرام
+                </a>
+            </div>
+
+        </div>
+
+        <!-- ============================================
+        فوتر سایت
+        ============================================ -->
+        <footer class="main-footer">
+            <div class="footer-top-bar"></div>
+
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <div class="footer-logo">
+                        <span class="logo-part1">Rare</span><span class="logo-part2">Action</span>
+                    </div>
+                    <p class="footer-description">
+                        Rare Action مجموعه‌ای از اکسسوری‌های خاص و منحصر به فرد. 
+                        کیفیت، اصالت و رضایت شما، اولویت ماست.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/rareaction_2026?igsh=MXd6MGVqdzZ6cGJiag==" target="_blank" class="social-link" aria-label="اینستاگرام">
+                            <svg viewBox="0 0 24 24" width="22" height="22">
+                                <defs>
+                                    <linearGradient id="instaGradFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#f09433"/>
+                                        <stop offset="25%" stop-color="#e6683c"/>
+                                        <stop offset="60%" stop-color="#dc2743"/>
+                                        <stop offset="75%" stop-color="#cc2366"/>
+                                        <stop offset="100%" stop-color="#bc1888"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect x="2" y="2" width="20" height="20" rx="5" fill="url(#instaGradFooter)"/>
+                                <circle cx="12" cy="12" r="4.5" fill="white"/>
+                                <circle cx="17.5" cy="6.5" r="1.5" fill="white"/>
+                            </svg>
+                        </a>
+                        <a href="https://t.me/rareaction_20261" target="_blank" class="social-link" aria-label="تلگرام">
+                            <svg viewBox="0 0 24 24" width="22" height="22">
+                                <path d="M12 0C5.373 0 0 5.373 0 12C0 18.627 5.373 24 12 24C18.627 24 24 18.627 24 12C24 5.373 18.627 0 12 0Z" fill="#0088CC"/>
+                                <path d="M17.0806 7.05116L15.0006 16.0292C14.8726 16.5722 14.5046 16.7422 14.0486 16.4752L10.7826 14.0412L9.21464 15.5542C9.07464 15.6942 8.95564 15.8122 8.68364 15.8122L8.86564 12.4842L14.9156 7.05616C15.1236 6.87316 14.8726 6.77116 14.5966 6.95316L7.05264 11.7662L3.82864 10.7152C3.29864 10.5492 3.28664 10.1882 3.94064 9.92116L16.1496 4.85616C16.5986 4.69016 16.9846 4.96016 16.8376 5.72216L17.0806 7.05116Z" fill="white"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.tiktok.com/@rare_action" target="_blank" class="social-link" aria-label="تیک‌تاک">
+                            <svg viewBox="0 0 24 24" width="22" height="22">
+                                <rect x="2" y="2" width="20" height="20" rx="4" fill="#000000"/>
+                                <path d="M16.6 5.82C15.92 5.16 15.48 4.3 15.36 3.36L13.8 3.12V9.6V14.16C13.8 16.08 12.24 17.64 10.32 17.64C8.4 17.64 6.84 16.08 6.84 14.16C6.84 12.24 8.4 10.68 10.32 10.68C10.68 10.68 11.04 10.74 11.4 10.86V9.24C11.04 9.18 10.68 9.12 10.32 9.12C7.56 9.12 5.28 11.4 5.28 14.16C5.28 16.92 7.56 19.2 10.32 19.2C13.08 19.2 15.36 16.92 15.36 14.16V8.82C15.96 9.24 16.68 9.54 17.4 9.72V8.1C17.4 7.92 17.4 7.74 17.4 7.56C17.16 6.9 16.92 6.3 16.6 5.82Z" fill="white"/>
+                            </svg>
+                        </a>
+                        <a href="https://rubika.ir/@RareAction_Admin" target="_blank" class="social-link" aria-label="روبیکا">
+                            <svg viewBox="0 0 24 24" width="22" height="22">
+                                <rect x="2" y="2" width="20" height="20" rx="4" fill="#E64A19"/>
+                                <path d="M12 6C8.686 6 6 8.686 6 12C6 15.314 8.686 18 12 18C15.314 18 18 15.314 18 12C18 8.686 15.314 6 12 6Z" fill="white"/>
+                                <circle cx="12" cy="12" r="2.5" fill="#E64A19"/>
+                                <circle cx="16" cy="8" r="0.8" fill="white"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section links">
+                    <h3>🔗 لینک‌های مفید</h3>
+                    <ul>
+                        <li><a href="index.html">🏠 خانه</a></li>
+                        <li><a href="index.html#explore-by-interest">🛍️ محصولات</a></li>
+                        <li><a href="support.html">💬 پشتیبانی</a></li>
+                        <li><a href="aboutus.html">ℹ️ درباره ما</a></li>
+                        <li><a href="terms.html">❓ سوالات متداول</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section contact">
+                    <h3>📞 تماس با ما</h3>
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <span>erfanrezaei56k@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📱</span>
+                        <span>۰۹۳۷۳۳۶۹۲۱۹</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">🕐</span>
+                        <span>پاسخگویی: 9 الی 22</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <span>ایران، خوی</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>© 2026 <strong>Rare Action</strong>. تمامی حقوق محفوظ است.</span>
+                <span class="footer-bottom-links">
+                    <a href="#">حریم خصوصی</a>
+                    <span class="divider">|</span>
+                    <a href="#">شرایط استفاده</a>
+                </span>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- ============================================
+    جاوا اسکریپت - مدیریت سوالات کشویی
+    ============================================ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            // بستن همه سوالات
+            function closeAllFaqs() {
+                faqItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+            }
+
+            // باز کردن یک سوال
+            function openFaq(item) {
+                // اول همه را ببند
+                closeAllFaqs();
+                // سپس این یکی را باز کن
+                item.classList.add('active');
+            }
+
+            // رویداد کلیک روی هر سوال
+            faqItems.forEach((item, index) => {
+                const question = item.querySelector('.faq-question');
+
+                question.addEventListener('click', function() {
+                    const isOpen = item.classList.contains('active');
+
+                    if (isOpen) {
+                        // اگر باز بود، ببند
+                        item.classList.remove('active');
+                    } else {
+                        // اگر بسته بود، همه را ببند و این یکی را باز کن
+                        openFaq(item);
+                    }
+                });
+            });
+
+            // اگر سوالی در URL وجود داشت (مثلاً terms.html#faq-3)
+            const hash = window.location.hash;
+            if (hash && hash.startsWith('#faq-')) {
+                const index = parseInt(hash.replace('#faq-', '')) - 1;
+                if (faqItems[index]) {
+                    setTimeout(function() {
+                        openFaq(faqItems[index]);
+                        faqItems[index].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 500);
+                }
+            }
+
+            console.log('✅ سوالات متداول بارگذاری شد!');
+        });
+    </script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

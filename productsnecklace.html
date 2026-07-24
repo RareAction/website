@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rare Action - محصولات گردنبند </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="products.css">
+    <!-- برای فونت وزیر -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+    /* --- استایل‌های اختصاصی صفحه ساعت‌ها --- */
+
+        .watches-page-container {
+    padding: 40px 20px;
+    background-color: var(--background-light, #f8f9fa);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.watches-page-title {
+    text-align: center;
+    font-size: 2.8em;
+    color: var(--primary-purple, #6a1b9a);
+    margin-bottom: 40px;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.watches-page-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background-color: var(--accent-pink, #e91e63);
+    border-radius: 2px;
+}
+
+/* ✅ گرید واکنش‌گرا با حداقل ۲ ستون */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+/* ✅ کارت محصول با وسط‌چین */
+.product-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    animation: fadeInSlideUp 0.8s forwards ease-out;
+    animation-delay: calc(var(--i) * 0.15s);
+    opacity: 0;
+    transform: translateY(30px);
+    /* ✅ وسط‌چین کردن همه محتوا */
+    align-items: center;
+    text-align: center;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+}
+
+.product-info {
+    padding: 18px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    /* ✅ وسط‌چین کردن محتوای اطلاعات */
+    align-items: center;
+    width: 100%;
+}
+
+.product-name {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--text-dark, #2c3e50);
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.product-code {
+    font-size: 0.85em;
+    background: #f0f0f0;
+    padding: 3px 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    display: inline-block;
+    color: #666;
+    text-align: center;
+}
+
+.product-price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--accent-pink, #e91e63);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* ✅ توضیحات فقط ۱ خط با وسط‌چین */
+.product-description {
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    /* نمایش فقط ۱ خط با ... */
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 1.4em;
+    text-align: center;
+    width: 100%;
+}
+
+/* ✅ دکمه با عرض مناسب و وسط‌چین */
+.details-button {
+    display: inline-block;
+    width: 80%;
+    padding: 10px 15px;
+    background-color: var(--secondary-blue, #2196f3);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+    margin-top: auto;
+    align-self: center;
+}
+
+.details-button:hover {
+    background-color: #1976d2;
+    transform: translateY(-3px);
+    color: #FFF;
+}
+
+/* انیمیشن */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ✅ واکنش‌گرایی برای نمایش حداقل ۲ کارت */
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 15px 0;
+    }
+
+    .watches-page-title {
+        font-size: 2.2em;
+    }
+
+    .product-info {
+        padding: 12px;
+    }
+
+    .product-name {
+        font-size: 1em;
+    }
+
+    .product-price {
+        font-size: 1em;
+    }
+
+    .product-description {
+        font-size: 0.8em;
+    }
+
+    .details-button {
+        font-size: 0.85em;
+        padding: 8px 12px;
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .product-image {
+        aspect-ratio: 4 / 3;
+    }
+
+    .watches-page-title {
+        font-size: 1.8em;
+    }
+
+    .details-button {
+        width: 100%;
+    }
+}
+
+/* برای نمایش ۴ ستون در صفحه‌های خیلی بزرگ */
+@media (min-width: 1200px) {
+    .products-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* برای نمایش ۳ ستون در صفحه‌های متوسط-بزرگ */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+</style>
+</head>
+<body>
+    <div class="site-container">
+        <!-- بخش Header -->
+        <header class="main-header">
+            <div class="header-left">
+                <!-- آیکون منوی همبرگری -->
+                <div class="hamburger-menu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <!-- منوی کناری (در ابتدا مخفی است) -->
+                <!-- در فایل index.html، بخش sidebar-menu -->
+                 <nav class="sidebar-menu">
+                    <ul>
+                        <li><a href="index.html">خانه</a></li>
+                        <!-- کلاس menu-item-has-arrow اضافه شد و فونت سایز حذف شد -->
+                         <li class="has-submenu menu-item-has-arrow">
+                            <a href="#products-section">محصولات
+                                <!-- فلش دستی اضافه شد -->
+                                 <span class="submenu-arrow">▼</span>
+                                </a>
+                                <ul class="submenu">
+                                    <li><a href="productswatch.html">ساعت</a></li>
+                                    <li><a href="productsbracelet.html">دستبند</a></li>
+                                    <li><a href="productsnecklace.html">گردنبند</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="support.html">پشتیبانی</a></li>
+                            <li><a href="aboutus.html">درباره ما</a></li>
+                            <li><a href="terms.html">سوالات متداول </a></li>
+                        </ul>
+                    </nav>
+            </div>
+           
+                <div class="header-center">
+    <div class="universal-search-container">
+        <input type="text" id="universalSearchInput" class="universal-search-input" placeholder="جستجو در محصولات...">
+        <div id="universalSearchSuggestions" class="universal-search-suggestions"></div>
+        <button id="universalSearchButton" class="universal-search-button">جستجو</button>
+    </div>
+</div>
+                        <div class="header-right">
+                <!-- لوگوی سایت -->
+                <div class="logo-container">
+                    <span class="logo-part2">Action</span><span class="logo-part1">Rare</span>
+                </div>
+                <!-- عکس پروفایل (پیج) -->
+                <div class="profile-picture-container">
+                    <img src="images/RareAction.jpg" alt= "عکس پروفایل" class="profile-picture">
+                </div>
+            </div>
+
+        </header>
+
+        <!-- بخش Hero Section (زیر هدر) -->
+        <!-- بخش صفحه ساعت‌ها -->
+        <main class="watches-page-container">
+            <h1 class="watches-page-title">بخش گردنبند ها   </h1>
+
+            <div class="products-grid">
+                <!-- محصول 1 -->
+                <div class="product-card" style="--i: 0;">
+                    <img src="images/3011.jpg" alt="ساعت مدل A" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">گردنبند نماد فروهر   </h3>
+                        <span class="product-code">کد: RA-301</span>
+                        <p class="product-price">269,000 تومان</p>
+                        <p class="product-description">
+                           «مجموعه‌ای از زیباترین اکسسوری‌های مد روز که با جزئیات عشق می‌ورزند. از طلایی‌های کلاسیک تا نقره‌های مدرن، هر قطعه داستانی از زیبایی و ظرافت را روایت می‌کند.»
+                        </p>
+                        <a href="necklaces.html?id=گردنبند فروهر" class="details-button">مشاهده جزئیات</a>
+                    </div>
+                </div>
+
+                <!-- محصول 2 -->
+                <div class="product-card" style="--i: 1;">
+                    <img src="images/3021.jpg" alt="ساعت مدل B" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name"> پلاک ایران طرح فروهر</h3>
+                        <span class="product-code">کد: RA-302</span>
+                        <p class="product-price">290,000 تومان</p>
+                        <p class="product-description">
+                            این گردنبند فقط یک زیورآلات نیست؛ یک اثر هنری مینیاتوری است. پلاک نقره‌ای با حکاکی‌های ظریف و پرنده‌ی طلایی در مرکز، نمادی از قدرت و آزادی است. اما چیزی که آن را منحصر‌به‌فرد می‌کند
+                        </p>
+                        <a href="necklaces.html?id=پلاک ایران طرح فورهر" class="details-button">مشاهده جزئیات</a>
+                    </div>
+                </div>
+
+                <!-- محصول 3 -->
+                <div class="product-card" style="--i: 1;">
+                    <img src="images/3031.jpg" alt="ساعت مدل B" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name"> گردنبند منشور کوروش</h3>
+                        <span class="product-code">کد: RA-303</span>
+                        <p class="product-price">459,000 تومان</p>
+                        <p class="product-description">
+                            فراتر از یک زیورآلات ساده؛ این گردنبند، تجسمی از استقامت و اصالت است.
+                        </p>
+                        <a href="necklaces.html?id=گردنبند منشور کوروش" class="details-button">مشاهده جزئیات</a>
+                    </div>
+                </div>
+
+                <!-- محصول 4 -->
+                <div class="product-card" style="--i: 1;">
+                    <img src="images/3041.jpg" alt="ساعت مدل B" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name"> گردنبند شیر وخورشید</h3>
+                        <span class="product-code">کد: RA-304</span>
+                        <p class="product-price">620,000 تومان</p>
+                        <p class="product-description">
+                            خورشیدِ پشتِ شیر؛ میراثی درخشان بر گردن تو
+                        </p>
+                        <a href="necklaces.html?id=گردنبند شیر وخورشید" class="details-button">مشاهده جزئیات</a>
+                    </div>
+                </div>
+
+                <!-- محصول 5 -->
+                <div class="product-card" style="--i: 1;">
+                    <img src="images/3051.jpg" alt="ساعت مدل B" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name"> گردنبند ایران کوروش</h3>
+                        <span class="product-code">کد: RA-305</span>
+                        <p class="product-price">390,000 تومان</p>
+                        <p class="product-description">
+                            سرزمین من، بر سینه‌ام؛ طلسمی از جنس افتخار
+                        </p>
+                        <a href="necklaces.html?id=گردنبند ایران کوروش" class="details-button">مشاهده جزئیات</a>
+                    </div>
+                </div>
+
+                <!-- می‌توانید محصولات بیشتری به همین شکل اضافه کنید -->
+
+            </div>
+        </main>
+        <!-- بخش فوتر -->
+        <footer class="main-footer">
+    <div class="footer-top-bar"></div>
+    
+    <div class="footer-content">
+        <!-- بخش درباره ما -->
+        <div class="footer-section about">
+            <div class="footer-logo">
+                <span class="logo-part1">Rare</span><span class="logo-part2">Action</span>
+            </div>
+            <p class="footer-description">
+                Rare Action مجموعه‌ای از اکسسوری‌های خاص و منحصر به فرد. 
+                کیفیت، اصالت و رضایت شما، اولویت ماست.
+            </p>
+            <div class="footer-social">
+                <!-- اینستاگرام -->
+                <a href="https://www.instagram.com/rareaction_2026?igsh=MXd6MGVqdzZ6cGJiag==" target="_blank" class="social-link" aria-label="اینستاگرام" title="اینستاگرام">
+                    <svg viewBox="0 0 24 24" width="22" height="22">
+                        <defs>
+                            <linearGradient id="instaGradFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#f09433"/>
+                                <stop offset="25%" stop-color="#e6683c"/>
+                                <stop offset="60%" stop-color="#dc2743"/>
+                                <stop offset="75%" stop-color="#cc2366"/>
+                                <stop offset="100%" stop-color="#bc1888"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="2" y="2" width="20" height="20" rx="5" fill="url(#instaGradFooter)"/>
+                        <circle cx="12" cy="12" r="4.5" fill="white"/>
+                        <circle cx="17.5" cy="6.5" r="1.5" fill="white"/>
+                        <path d="M2 2L22 22" stroke="white" stroke-width="0.5" opacity="0.1"/>
+                    </svg>
+                </a>
+                
+                <!-- تلگرام -->
+                <a href="https://t.me/rareaction_20261" target="_blank" class="social-link" aria-label="تلگرام" title="تلگرام">
+                    <svg viewBox="0 0 24 24" width="22" height="22">
+                        <path d="M12 0C5.373 0 0 5.373 0 12C0 18.627 5.373 24 12 24C18.627 24 24 18.627 24 12C24 5.373 18.627 0 12 0Z" fill="#0088CC"/>
+                        <path d="M17.0806 7.05116L15.0006 16.0292C14.8726 16.5722 14.5046 16.7422 14.0486 16.4752L10.7826 14.0412L9.21464 15.5542C9.07464 15.6942 8.95564 15.8122 8.68364 15.8122L8.86564 12.4842L14.9156 7.05616C15.1236 6.87316 14.8726 6.77116 14.5966 6.95316L7.05264 11.7662L3.82864 10.7152C3.29864 10.5492 3.28664 10.1882 3.94064 9.92116L16.1496 4.85616C16.5986 4.69016 16.9846 4.96016 16.8376 5.72216L17.0806 7.05116Z" fill="white"/>
+                        <path d="M15.0006 16.0292C14.8726 16.5722 14.5046 16.7422 14.0486 16.4752L10.7826 14.0412L9.21464 15.5542C9.07464 15.6942 8.95564 15.8122 8.68364 15.8122L8.86564 12.4842L14.9156 7.05616C15.1236 6.87316 14.8726 6.77116 14.5966 6.95316L7.05264 11.7662L3.82864 10.7152C3.29864 10.5492 3.28664 10.1882 3.94064 9.92116L16.1496 4.85616C16.5986 4.69016 16.9846 4.96016 16.8376 5.72216L15.0006 16.0292Z" fill="white" opacity="0.4"/>
+                    </svg>
+                </a>
+                
+                <!-- تیک‌تاک -->
+                <a href="https://www.tiktok.com/@rare_action" target="_blank" class="social-link" aria-label="تیک‌تاک" title="تیک‌تاک">
+                    <svg viewBox="0 0 24 24" width="22" height="22">
+                        <rect x="2" y="2" width="20" height="20" rx="4" fill="#000000"/>
+                        <path d="M16.6 5.82C15.92 5.16 15.48 4.3 15.36 3.36L13.8 3.12V9.6V14.16C13.8 16.08 12.24 17.64 10.32 17.64C8.4 17.64 6.84 16.08 6.84 14.16C6.84 12.24 8.4 10.68 10.32 10.68C10.68 10.68 11.04 10.74 11.4 10.86V9.24C11.04 9.18 10.68 9.12 10.32 9.12C7.56 9.12 5.28 11.4 5.28 14.16C5.28 16.92 7.56 19.2 10.32 19.2C13.08 19.2 15.36 16.92 15.36 14.16V8.82C15.96 9.24 16.68 9.54 17.4 9.72V8.1C17.4 7.92 17.4 7.74 17.4 7.56C17.16 6.9 16.92 6.3 16.6 5.82Z" fill="white"/>
+                    </svg>
+                </a>
+                
+                <!-- روبیکا -->
+                <a href="https://rubika.ir/@RareAction_Admin" target="_blank" class="social-link" aria-label="روبیکا" title="روبیکا">
+                    <svg viewBox="0 0 24 24" width="22" height="22">
+                        <rect x="2" y="2" width="20" height="20" rx="4" fill="#E64A19"/>
+                        <path d="M12 6C8.686 6 6 8.686 6 12C6 15.314 8.686 18 12 18C15.314 18 18 15.314 18 12C18 8.686 15.314 6 12 6Z" fill="white"/>
+                        <circle cx="12" cy="12" r="2.5" fill="#E64A19"/>
+                        <circle cx="16" cy="8" r="0.8" fill="white"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- بخش لینک‌های مفید -->
+        <div class="footer-section links">
+            <h3>🔗 لینک‌های مفید</h3>
+            <ul>
+                <li><a href="index.html">🏠 خانه</a></li>
+                <li><a href="index.html#explore-by-interest">🛍️ محصولات</a></li>
+                <li><a href="support.html">💬 پشتیبانی</a></li>
+                <li><a href="aboutus.html">ℹ️ درباره ما</a></li>
+                <li><a href="terms.html#faq-section">❓ سوالات متداول</a></li>
+            </ul>
+        </div>
+
+        <!-- بخش تماس با ما -->
+        <div class="footer-section contact">
+            <h3>📞 تماس با ما</h3>
+            <div class="contact-item">
+                <span class="contact-icon">📧</span>
+                <span>erfanrezaei56k@gmail.com</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">📱</span>
+                <span>۰۹۳۷۳۳۶۹۲۱۹</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">🕐</span>
+                <span>پاسخگویی: 9 الی 22</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">📍</span>
+                <span>ایران، خوی</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- بخش پایین فوتر -->
+    <div class="footer-bottom">
+        <span>© 2026 <strong>Rare Action</strong>. تمامی حقوق محفوظ است.</span>
+        <span class="footer-bottom-links">
+            <a href="#">حریم خصوصی</a>
+            <span class="divider">|</span>
+            <a href="#">شرایط استفاده</a>
+        </span>
+    </div>
+</footer>
+    </div>
+
+    <!-- جاوا اسکریپت -->
+    <script src="script.js"></script>
+    <script>
+        // --- جاوا اسکریپت برای انیمیشن محصولات ---
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const cards = entry.target.querySelectorAll('.product-card');
+                        cards.forEach((card, index) => {
+                            card.style.setProperty('--i', index); // تنظیم تاخیر انیمیشن
+                            card.style.animation = `fadeInSlideUp 0.8s forwards ease-out ${index * 0.2}s`;
+                        });
+                        // observer.unobserve(entry.target); // اگر فقط یک بار انیمیشن اجرا شود
+                    }
+                });
+            }, { threshold: 0.1 }); // زمانی که 10% از کارت‌ها دیده شوند
+
+            observer.observe(document.querySelector('.products-grid'));
+        });
+    </script>
+</body>
+</html>

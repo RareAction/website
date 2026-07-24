@@ -1,0 +1,535 @@
+/* --- استایل‌های اختصاصی صفحه جزئیات محصول --- */
+
+        :root {
+            --a-accent-pink: #e91e63;
+            --a-primary-purple: #673ab7;
+            --a-secondary-blue: #2196f3;
+            --a-text-light: #555;
+            --a-text-dark: #333;
+            --a-background-light: #f4f7f6;
+            --a-shadow-light: rgba(0,0,0,0.1);
+            --a-transition-speed: 0.4s;
+        }
+
+        .product-detail-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap; /* اجازه می‌دهد بخش‌ها روی هم بچینند در سایزهای کوچک */
+            gap: 30px;
+            justify-content: center;
+            align-items: flex-start; /* هم‌ترازی بالا */
+            animation: fadeInFromTop 1s ease-out forwards; /* انیمیشن ورود */
+        }
+
+        .product-gallery-section {
+            flex: 1 1 450px; /* انعطاف‌پذیری: حداقل 450px، می‌تواند رشد کند */
+            max-width: 450px;
+            position: relative;
+        }
+
+        .main-image-container {
+            width: 100%;
+            height: 500px; /* ارتفاع ثابت برای تصویر اصلی */
+            overflow: hidden;
+            border-radius: 12px;
+            position: relative;
+            cursor: pointer;
+            background-color: var(--a-background-light);
+        }
+
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--a-transition-speed) ease-in-out;
+            display: block; /* حذف فضای اضافی زیر تصویر */
+        }
+
+        /* کلاس‌های انیمیشن برای جاوا اسکریپت */
+.main-image.slide-out-left {
+    transform: translateX(-100%);
+}
+.main-image.slide-in-right {
+    transform: translateX(0%);
+}
+.main-image.slide-out-right {
+    transform: translateX(100%);
+}
+.main-image.slide-in-left {
+    transform: translateX(0%);
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.nav-btn.prev {
+    left: 10px;
+}
+
+.nav-btn.next {
+    right: 10px;
+}
+
+        .thumbnail-slider {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            overflow-x: auto; /* اسکرول افقی اگر تعداد عکس‌ها زیاد بود */
+            padding-bottom: 10px; /* فضایی برای اسکرول */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .thumbnail-slider::-webkit-scrollbar {
+            display: none;  /* Chrome, Safari, Opera */
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            border: 2px solid transparent; /* برای هایلایت */
+        }
+
+        .thumbnail:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .thumbnail.active {
+            opacity: 1;
+            transform: scale(1.05);
+            border-color: var(--a-secondary-blue); /* هایلایت تصویر فعال */
+        }
+
+            /* --- انیمیشن‌های اسلاید (برای main-image) --- */
+.slide-out-left {
+    animation: slideOutLeft 0.4s ease-in-out forwards;
+}
+.slide-in-right {
+    animation: slideInRight 0.4s ease-in-out forwards;
+}
+.slide-out-right { /* برای حرکت به چپ */
+    animation: slideOutRight 0.4s ease-in-out forwards;
+}
+.slide-in-left { /* برای حرکت به راست */
+    animation: slideInLeft 0.4s ease-in-out forwards;
+}
+
+@keyframes slideOutLeft {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); opacity: 0; }
+}
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+@keyframes slideOutRight { /* حرکت به چپ */
+    from { transform: translateX(0); }
+    to { transform: translateX(100%); opacity: 0; }
+}
+@keyframes slideInLeft { /* حرکت به راست */
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+        .product-info-section {
+            flex: 2 1 500px; /* دو برابر گالری فضا بگیرد، حداقل 500px */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* چیدمان از چپ */
+        }
+
+        .product-header {
+            width: 100%;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; /* برای جلوگیری از سرریز شدن در سایزهای کوچک */
+        }
+
+        .product-title-code-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .product-name {
+            font-size: 2.2em;
+            color: var(--a-primary-purple);
+            font-weight: 800;
+            margin-bottom: 5px; /* کمی فاصله با کد محصول */
+        }
+
+        .product-code {
+    font-size: 1em;
+    color: var(--a-text-light);
+    background-color: var(--a-background-light);
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-family: 'Courier New', Courier, monospace;
+    border: 1px dashed #ccc;
+
+    display: inline-block;
+    width: max-content; /* فقط یک خط، دقیقاً اندازه محتوا */
+    max-width: 100%;
+    white-space: nowrap; /* جلوگیری از خط جدید */
+    overflow: visible;   /* برش نخوره */
+    text-overflow: clip; /* سه نقطه نشه */
+     }
+
+        .product-price {
+            font-size: 1.8em;
+            color: var(--a-accent-pink);
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .product-description-full {
+            font-size: 1.1em;
+            color: var(--a-text-light);
+            line-height: 1.8;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            max-width: 650px; /* محدود کردن عرض متن */
+        }
+
+        .product-description-full_2 {
+            font-size: 1.1em;
+            color: var(--a-text-light);
+            line-height: 1.8;
+            margin-top: 10px;
+            margin-bottom: 30px;
+            max-width: 650px; /* محدود کردن عرض متن */
+        }
+
+        .specs-section {
+            width: 100%;
+            background-color: #fdfdfd;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #f0f0f0;
+            margin-top: 20px;
+            box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .specs-section h3 {
+            font-size: 1.6em;
+            color: var(--a-secondary-blue);
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--a-secondary-blue);
+            padding-bottom: 10px;
+        }
+
+        .specs-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* دو ستونه */
+            gap: 15px 25px; /* فاصله ردیف و ستون */
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .specs-list li {
+            display: flex;
+            justify-content: space-between; /* کلید و مقدار در دو طرف */
+            font-size: 1em;
+            color: var(--a-text-dark);
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee; /* خط جدا کننده ملایم */
+        }
+
+        .specs-list li:last-child {
+            border-bottom: none; /* حذف خط برای آخرین مورد */
+        }
+
+        .specs-key {
+            font-weight: 600;
+            color: #444;
+        }
+
+        .specs-value {
+            color: var(--a-text-light);
+            text-align: right;
+        }
+
+        /* ✅ کانتینر دکمه‌ها برای قرارگیری کنار هم */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 40px 20px 10px 20px;
+}
+
+/* ✅ دکمه بازگشت */
+.return-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--a-accent-pink, #e91e63);
+    color: white;
+    padding: 18px 35px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    border: 3px solid transparent;
+    box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3);
+    cursor: pointer;
+    min-width: 200px;
+}
+
+.return-button:hover {
+    background-color: #c2185b;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(233, 30, 99, 0.4);
+}
+
+/* ✅ دکمه خرید از تلگرام */
+/* 3️⃣ استایل دکمه کامل با متن */
+.telegram-button-full {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: #0088CC;
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+    border: 2px solid transparent;
+}
+
+.telegram-button-full:hover {
+    background: #006699;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 136, 204, 0.5);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.telegram-button-full span {
+    color: white;
+    font-size: 1em;
+}
+
+.telegram-button-full svg {
+    flex-shrink: 0;
+}
+
+/* ✅ متن راهنما - وسط‌چین با استایل زیبا */
+.guide-text {
+    display: block;
+    text-align: center;
+    font-size: 1.15em;
+    color: #333;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+    padding: 18px 25px;
+    margin: 20px auto 10px auto;
+    max-width: 700px;
+    border-radius: 12px;
+    border-right: 5px solid #0088cc;
+    border-left: 5px solid #e91e63;
+    font-weight: 500;
+    line-height: 1.8;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+/* ✅ آیکون کوچک قبل از متن (اختیاری) */
+.guide-text::before {
+    content: '💡';
+    margin-left: 10px;
+    font-size: 1.2em;
+}
+
+/* ============================================
+   استایل‌های اضافی برای گروه تلگرام
+   ============================================ */
+
+/* استایل برای قرار دادن چند لوگو کنار هم */
+.social-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* استایل برای لوگوی تلگرام در فوتر */
+.footer-telegram {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #0088CC;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 25px;
+    background: rgba(0, 136, 204, 0.05);
+}
+
+.footer-telegram:hover {
+    background: rgba(0, 136, 204, 0.15);
+    transform: translateX(5px);
+}
+
+.footer-telegram svg {
+    flex-shrink: 0;
+}
+
+/* واکنش‌گرایی */
+@media (max-width: 600px) {
+    .telegram-circle {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .telegram-circle svg {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .telegram-button-full {
+        padding: 10px 18px;
+        font-size: 0.9em;
+    }
+    
+    .telegram-button-full svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .telegram-icon-wrapper {
+        width: 46px;
+        height: 46px;
+    }
+    
+    .telegram-icon-wrapper svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media (max-width: 400px) {
+    .social-link {
+        width: 34px;
+        height: 34px;
+    }
+    
+    .social-link svg {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .telegram-circle {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .telegram-circle svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .product-detail-container {
+                flex-direction: column; /* عمودی کردن در سایزهای کوچک */
+                align-items: center;
+                padding: 20px;
+            }
+
+            .product-gallery-section,
+            .product-info-section {
+                flex: none; /* برداشتن انعطاف‌پذیری */
+                width: 100%;
+                max-width: 450px; /* محدود کردن عرض */
+            }
+
+            .main-image-container {
+                height: 400px; /* کمی کوچک‌تر کردن عکس اصلی */
+            }
+
+            .product-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .product-title-code-container {
+                flex-direction: column;
+                margin-bottom: 15px;
+            }
+
+            .product-name {
+                font-size: 1.8em;
+            }
+
+            .product-price {
+                font-size: 1.6em;
+            }
+
+            .specs-list {
+                grid-template-columns: 1fr; /* تک ستونه کردن مشخصات */
+            }
+
+            .return-button {
+                padding: 15px 30px;
+                font-size: 1.1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-image-container {
+                height: 300px;
+            }
+            .product-name {
+                font-size: 1.6em;
+            }
+            .product-price {
+                font-size: 1.4em;
+            }
+            .thumbnail {
+                width: 60px;
+                height: 60px;
+            }
+        }

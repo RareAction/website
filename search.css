@@ -1,0 +1,289 @@
+/* search_style.css */
+
+/* استایل‌های هدر (اگر در فایل جداگانه نیستند) */
+.header-center {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* وسط چین کردن بخش جستجو */
+    width: 100%;
+    padding: 10px 0;
+    background-color: #fff; /* یا رنگ هدر سایت شما */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 400px; /* عرض بیشتر برای هدر */
+    max-width: 90%; /* اطمینان از ریسپانسیو بودن */
+    margin: 0 15px; /* فاصله از کناره ها */
+}
+
+#search-input {
+    padding: 12px 50px 12px 15px; /* فضای بیشتر برای آیکون فیلتر */
+    border: 1px solid #ccc;
+    border-radius: 25px; /* گرد کردن بیشتر */
+    font-size: 1em;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #f8f9fa; /* رنگ پس زمینه ملایم */
+}
+
+#search-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+#filter-icon {
+    position: absolute;
+    right: 50px; /* قرارگیری کنار ورودی */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1.2em;
+    color: #6c757d;
+    transition: color 0.3s ease;
+    z-index: 5; /* بالای ورودی */
+}
+
+#filter-icon:hover {
+    color: #007bff;
+}
+
+#search-button {
+    padding: 12px 25px;
+    background-color: #007bff; /* رنگ اصلی سایت */
+    color: white;
+    border: none;
+    border-radius: 25px; /* گرد کردن */
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+    white-space: nowrap; /* جلوگیری از شکستن کلمه "جستجو" */
+}
+
+#search-button:hover {
+    background-color: #0056b3;
+}
+
+/* استایل‌های کادر فیلتر قیمت */
+.price-filter-container {
+    display: none;
+    position: absolute;
+    top: 100%; /* زیر کادر جستجو */
+    right: 0; /* همراستایی با راست کادر جستجو */
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 1001; /* بالاتر از همه چیز */
+    min-width: 280px;
+    margin-top: 8px;
+    transform-origin: top right; /* برای انیمیشن باز شدن */
+    animation: fadeInDropdown 0.3s ease forwards;
+}
+
+@keyframes fadeInDropdown {
+    from { transform: translateY(-10px) scaleY(0.9); opacity: 0; }
+    to { transform: translateY(0) scaleY(1); opacity: 1; }
+}
+
+.price-filter-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #444;
+    font-size: 0.95em;
+}
+
+.price-filter-container input[type="number"] {
+    width: calc(100% - 22px); /* برای padding و border */
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    font-family: inherit; /* استفاده از فونت صفحه */
+    font-size: 0.9em;
+}
+.price-filter-container input[type="number"]:focus {
+    border-color: #007bff;
+}
+
+.price-filter-container button {
+    background-color: #28a745; /* رنگ سبز برای دکمه اعمال */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    font-weight: 500;
+}
+
+.price-filter-container button:hover {
+    background-color: #218838;
+}
+
+/* صفحه جستجو */
+.search-page-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-radius: 12px;
+}
+
+.search-page-container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 2.2em;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+}
+
+.search-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px; /* فاصله بیشتر بین کارت ها */
+    margin-top: 20px;
+}
+
+.product-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+}
+
+.product-image {
+    width: 100%;
+    height: 220px; /* ارتفاع بیشتر برای تصویر */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 18px;
+}
+
+.product-info {
+    padding: 0; /* حذف padding چون padding کلی کارت داریم */
+}
+
+.product-name {
+    font-size: 1.2em;
+    margin-bottom: 8px;
+    color: #1a1a1a;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.product-code {
+    font-size: 0.85em;
+    color: #777;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.product-price {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #d32f2f;
+    margin-bottom: 15px;
+}
+
+.product-description {
+    font-size: 0.95em;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1; /* کش آمدن توضیحات */
+}
+
+.details-button {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 12px 18px;
+    text-decoration: none;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    box-sizing: border-box; /* محاسبه padding در عرض 100% */
+}
+
+.details-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* کلاس برای مخفی کردن محصولات */
+.product-card.hidden {
+    display: none !important;
+}
+
+/* برای صفحه نمایش کوچکتر (ریسپانسیو) */
+@media (max-width: 768px) {
+    .search-container {
+        width: 100%;
+        padding: 0 10px;
+        margin: 0;
+    }
+    #search-input {
+        padding: 10px 45px 10px 15px;
+    }
+    #filter-icon {
+        right: 45px;
+    }
+    #search-button {
+        padding: 10px 20px;
+        font-size: 0.95em;
+    }
+    .price-filter-container {
+        width: 90%;
+        right: 5%;
+        left: 5%;
+        top: 60px; /* تنظیم موقعیت */
+    }
+    .search-page-container {
+        margin: 15px 10px;
+        padding: 15px;
+    }
+    .search-results {
+        grid-template-columns: 1fr; /* نمایش تک ستونه در موبایل */
+    }
+    .product-card {
+        padding: 15px;
+    }
+    .product-image {
+        height: 180px;
+    }
+    .product-name {
+        font-size: 1.1em;
+    }
+    .product-price {
+        font-size: 1.2em;
+    }
+    .details-button {
+        padding: 10px 15px;
+    }
+}

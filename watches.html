@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشخصات محصول</title>
+    <link rel="stylesheet" href="style.css"> <!-- لینک به فایل CSS اصلی شما -->
+    <link rel="stylesheet" href="products.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- آیکون‌ها -->
+</head>
+<body>
+
+    <div class="site-container">
+        <!-- بخش Header -->
+        <header class="main-header">
+            <div class="header-left">
+                <!-- آیکون منوی همبرگری -->
+                <div class="hamburger-menu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <!-- منوی کناری (در ابتدا مخفی است) -->
+                <!-- در فایل index.html، بخش sidebar-menu -->
+                 <nav class="sidebar-menu">
+                    <ul>
+                        <li><a href="index.html">خانه</a></li>
+                        <!-- کلاس menu-item-has-arrow اضافه شد و فونت سایز حذف شد -->
+                         <li class="has-submenu menu-item-has-arrow">
+                            <a href="index.html#explore-by-interest">محصولات
+                                <!-- فلش دستی اضافه شد -->
+                                 <span class="submenu-arrow">▼</span>
+                                </a>
+                                <ul class="submenu">
+                                    <li><a href="productswatch.html">ساعت</a></li>
+                                    <li><a href="productsbracelet.html">دستبند</a></li>
+                                    <li><a href="productsnecklace.html">گردنبند</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="support.html">پشتیبانی</a></li>
+                            <li><a href="aboutus.html">درباره ما</a></li>
+                            <li><a href="terms.html">سوالات متداول </a></li>
+                        </ul>
+                    </nav>
+            </div>
+
+            <div class="header-center">
+    <div class="universal-search-container">
+        <input type="text" id="universalSearchInput" class="universal-search-input" placeholder="جستجو در محصولات...">
+        <div id="universalSearchSuggestions" class="universal-search-suggestions"></div>
+        <button id="universalSearchButton" class="universal-search-button">جستجو</button>
+    </div>
+</div>
+                        <div class="header-right">
+                <!-- لوگوی سایت -->
+                <div class="logo-container">
+                    <span class="logo-part2">Action</span><span class="logo-part1">Rare</span>
+                </div>
+                <!-- عکس پروفایل (پیج) -->
+                <div class="profile-picture-container">
+                    <img src="images/RareAction.jpg" alt= "عکس پروفایل" class="profile-picture">
+                </div>
+            </div>
+
+        </header>
+
+    <div class="product-detail-container">
+
+        <section class="product-gallery-section">
+        <div class="main-image-container">
+            <button id="prev-btn" class="nav-btn next">‹</button> <!-- دکمه قبلی -->
+            <img id="main-product-image" src="" alt="تصویر اصلی محصول" class="main-image">
+            <button id="next-btn" class="nav-btn prev">›</button> <!-- دکمه بعدی -->
+        </div>
+        <div class="thumbnail-slider-wrapper"> <!-- Wrapper برای کنترل اسکرول -->
+            <div class="thumbnail-slider">
+                <!-- تصاویر کوچک اینجا توسط جاوا اسکریپت قرار می‌گیرند -->
+            </div>
+        </div>
+    </section>
+
+        <!-- بخش اطلاعات محصول -->
+        <section class="product-info-section">
+            <div class="product-header">
+                <div>
+                    <div class="product-title-code-container">
+                        <h1 id="product-name" class="product-name"></h1>
+                        <span id="product-code" class="product-code"></span>
+                    </div>
+                    <p id="product-price" class="product-price"></p>
+                </div>
+            </div>
+
+            <p id="product-description" class="product-description-full"></p>
+            <p id="product-description_2" class="product-description-full_2"></p>
+
+            <div class="specs-section">
+                <h3>مشخصات فنی</h3>
+                <ul id="specs-list" class="specs-list">
+                    <!-- مشخصات اینجا توسط جاوا اسکریپت قرار می‌گیرند -->
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- دکمه‌های پایین صفحه -->
+<div class="buttons-container">
+    <button id="return-button" class="return-button">بازگشت به صفحه قبل</button>
+<!-- دکمه کامل تلگرام با لوگو و متن -->
+<a href="https://t.me/rareaction_20261" target="_blank" class="telegram-button-full">
+    <svg viewBox="0 0 24 24" width="24" height="24">
+        <path d="M12 0C5.373 0 0 5.373 0 12C0 18.627 5.373 24 12 24C18.627 24 24 18.627 24 12C24 5.373 18.627 0 12 0Z" fill="white"/>
+        <path d="M17.0806 7.05116L15.0006 16.0292C14.8726 16.5722 14.5046 16.7422 14.0486 16.4752L10.7826 14.0412L9.21464 15.5542C9.07464 15.6942 8.95564 15.8122 8.68364 15.8122L8.86564 12.4842L14.9156 7.05616C15.1236 6.87316 14.8726 6.77116 14.5966 6.95316L7.05264 11.7662L3.82864 10.7152C3.29864 10.5492 3.28664 10.1882 3.94064 9.92116L16.1496 4.85616C16.5986 4.69016 16.9846 4.96016 16.8376 5.72216L17.0806 7.05116Z" fill="#0088CC"/>
+    </svg>
+    <span>خرید از تلگرام</span>
+</a>
+</div>
+
+<!-- ✅ متن راهنما زیر دکمه‌ها -->
+<p class="guide-text">
+    برای خرید، کد محصول مورد نظر به همراه رنگ انتخابی به آیدی تلگرام بفرستید
+</p>
+
+    <!-- بخش فوتر -->
+        <footer class="main-footer">
+    <div class="footer-top-bar"></div>
+    
+    <div class="footer-content">
+        <!-- بخش درباره ما -->
+        <div class="footer-section about">
+            <div class="footer-logo">
+                <span class="logo-part1">Rare</span><span class="logo-part2">Action</span>
+            </div>
+            <p class="footer-description">
+                Rare Action مجموعه‌ای از اکسسوری‌های خاص و منحصر به فرد. 
+                کیفیت، اصالت و رضایت شما، اولویت ماست.
+            </p>
+            <div class="footer-social">
+                <!-- اینستاگرام -->
+                <a href="https://www.instagram.com/rareaction_2026?igsh=MXd6MGVqdzZ6cGJiag==" target="_blank" class="social-link" aria-label="اینستاگرام" title="اینستاگرام">
+                    <svg viewBox="0 0 24 24" width="22" height="22">
+                        <defs>
+                            <linearGradient id="instaGradFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#f09433"/>
+                                <stop offset="25%" stop-color="#e6683c"/>
+                                <stop offset="60%" stop-color="#dc2743"/>
+                                <stop offset="75%" stop-color="#cc2366"/>
+                                <stop offset="100%" stop-color="#bc1888"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="2" y="2" width="20" height="20" rx="5" fill="url(#instaGradFooter)"/>
+                        <circle cx="12" cy="12" r="4.5" fill="white"/>
+                        <circle cx="17.5" cy="6.5" r="1.5" fill="white"/>
+                        <path d="M2 2L22 22" stroke="white" stroke-width="0.5" opacity="0.1"/>
+                    </svg>
+                </a>
+                
+                <!-- تلگرام -->
+                <a href="https://t.me/rareaction_20261" target="_blank" class="social-link" aria-label="تلگرام" title="تلگرام">
+                    <svg viewBox="0 0 24 24" width="22" height="22">
+                        <path d="M12 0C5.373 0 0 5.373 0 12C0 18.627 5.373 24 12 24C18.627 24 24 18.627 24 12C24 5.373 18.627 0 12 0Z" fill="#0088CC"/>
+                        <path d="M17.0806 7.05116L15.0006 16.0292C14.8726 16.5722 14.5046 16.7422 14.0486 16.4752L10.7826 14.0412L9.21464 15.5542C9.07464 15.6942 8.95564 15.8122 8.68364 15.8122L8.86564 12.4842L14.9156 7.05616C15.1236 6.87316 14.8726 6.77116 14.5966 6.95316L7.05264 11.7662L3.82864 10.7152C3.29864 10.5492 3.28664 10.1882 3.94064 9.92116L16.1496 4.85616C16.5986 4.69016 16.9846 4.96016 16.8376 5.72216L17.0806 7.05116Z" fill="white"/>
+                        <path d="M15.0006 16.0292C14.8726 16.5722 14.5046 16.7422 14.0486 16.4752L10.7826 14.0412L9.21464 15.5542C9.07464 15.6942 8.95564 15.8122 8.68364 15.8122L8.86564 12.4842L14.9156 7.05616C15.1236 6.87316 14.8726 6.77116 14.5966 6.95316L7.05264 11.7662L3.82864 10.7152C3.29864 10.5492 3.28664 10.1882 3.94064 9.92116L16.1496 4.85616C16.5986 4.69016 16.9846 4.96016 16.8376 5.72216L15.0006 16.0292Z" fill="white" opacity="0.4"/>
+                    </svg>
+                </a>
+                
+                <!-- تیک‌تاک -->
+                <a href="https://www.tiktok.com/@rare_action" target="_blank" class="social-link" aria-label="تیک‌تاک" title="تیک‌تاک">
+                    <svg viewBox="0 0 24 24" width="22" height="22">
+                        <rect x="2" y="2" width="20" height="20" rx="4" fill="#000000"/>
+                        <path d="M16.6 5.82C15.92 5.16 15.48 4.3 15.36 3.36L13.8 3.12V9.6V14.16C13.8 16.08 12.24 17.64 10.32 17.64C8.4 17.64 6.84 16.08 6.84 14.16C6.84 12.24 8.4 10.68 10.32 10.68C10.68 10.68 11.04 10.74 11.4 10.86V9.24C11.04 9.18 10.68 9.12 10.32 9.12C7.56 9.12 5.28 11.4 5.28 14.16C5.28 16.92 7.56 19.2 10.32 19.2C13.08 19.2 15.36 16.92 15.36 14.16V8.82C15.96 9.24 16.68 9.54 17.4 9.72V8.1C17.4 7.92 17.4 7.74 17.4 7.56C17.16 6.9 16.92 6.3 16.6 5.82Z" fill="white"/>
+                    </svg>
+                </a>
+                
+                <!-- روبیکا -->
+                <a href="https://rubika.ir/@RareAction_Admin" target="_blank" class="social-link" aria-label="روبیکا" title="روبیکا">
+                    <svg viewBox="0 0 24 24" width="22" height="22">
+                        <rect x="2" y="2" width="20" height="20" rx="4" fill="#E64A19"/>
+                        <path d="M12 6C8.686 6 6 8.686 6 12C6 15.314 8.686 18 12 18C15.314 18 18 15.314 18 12C18 8.686 15.314 6 12 6Z" fill="white"/>
+                        <circle cx="12" cy="12" r="2.5" fill="#E64A19"/>
+                        <circle cx="16" cy="8" r="0.8" fill="white"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- بخش لینک‌های مفید -->
+        <div class="footer-section links">
+            <h3>🔗 لینک‌های مفید</h3>
+            <ul>
+                <li><a href="index.html">🏠 خانه</a></li>
+                <li><a href="index.html#explore-by-interest">🛍️ محصولات</a></li>
+                <li><a href="support.html">💬 پشتیبانی</a></li>
+                <li><a href="aboutus.html">ℹ️ درباره ما</a></li>
+                <li><a href="terms.html#faq-section">❓ سوالات متداول</a></li>
+            </ul>
+        </div>
+
+        <!-- بخش تماس با ما -->
+        <div class="footer-section contact">
+            <h3>📞 تماس با ما</h3>
+            <div class="contact-item">
+                <span class="contact-icon">📧</span>
+                <span>erfanrezaei56k@gmail.com</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">📱</span>
+                <span>۰۹۳۷۳۳۶۹۲۱۹</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">🕐</span>
+                <span>پاسخگویی: 9 الی 22</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">📍</span>
+                <span>ایران، خوی</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- بخش پایین فوتر -->
+    <div class="footer-bottom">
+        <span>© 2026 <strong>Rare Action</strong>. تمامی حقوق محفوظ است.</span>
+        <span class="footer-bottom-links">
+            <a href="#">حریم خصوصی</a>
+            <span class="divider">|</span>
+            <a href="#">شرایط استفاده</a>
+        </span>
+    </div>
+</footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="products.js"></script>
+
+</body>
+</html>
