@@ -105,10 +105,10 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // اضافه کردن نمونه Casio اگر وجود نداشت
             const casioExample = {
-                "id": "Casio",
-                "name": "ساعت Casio",
-                "price": "1,000,000 تومان",
-                "product_code": "RA-005",
+                "id": "ساعت کاسیو",
+                "name": "ساعت کاسیو",
+                "price": "1,250,000 تومان",
+                "product_code": "RA-101",
                 "keywords": ["کاسیو", "ساعت", "کلاسیک", "مینیمال"]
             };
             
